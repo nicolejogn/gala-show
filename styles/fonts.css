@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 400; /* Regular */
+    font-style: normal;
+    src: url('/fonts/Figtree-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 400; /* Light */
+    font-style: normal;
+    src: url('/fonts/Figtree-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 400; /* Medium */
+    font-style: normal;
+    src: url('/fonts/Figtree-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 600; /* SemiBold */
+    font-style: normal;
+    src: url('/fonts/Figtree-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 700; /* Bold */
+    font-style: normal;
+    src: url('/fonts/Figtree-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 800; /* ExtraBold */
+    font-style: normal;
+    src: url('/fonts/Figtree-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 900; /* Black */
+    font-style: normal;
+    src: url('/fonts/Figtree-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 400; /* Italic */
+    font-style: italic;
+    src: url('/fonts/Figtree-Italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 400; /* Light Italic */
+    font-style: italic;
+    src: url('/fonts/Figtree-LightItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 400; /* Medium Italic */
+    font-style: italic;
+    src: url('/fonts/Figtree-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 600; /* SemiBold Italic */
+    font-style: italic;
+    src: url('/fonts/Figtree-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 700; /* Bold Italic */
+    font-style: italic;
+    src: url('/fonts/Figtree-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 800; /* ExtraBold Italic */
+    font-style: italic;
+    src: url('/fonts/Figtree-ExtraBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-weight: 900; /* Black Italic */
+    font-style: italic;
+    src: url('/fonts/Figtree-BlackItalic.ttf') format('truetype');
+}

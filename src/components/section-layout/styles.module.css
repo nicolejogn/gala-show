@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.contentWrapper {
+    max-width: 1520px;
+    width: 100%;
+}
+
+.contentWrapperSmall {
+    max-width: 1320px;
+    width: 100%;
+}
+
+.smallLayout {
+    background: #2b2b30;
+}

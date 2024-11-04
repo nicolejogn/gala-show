@@ -1,0 +1,35 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 1.5em;
+    color: white;
+}
+
+.viewMore {
+    color: #268aef;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    font-weight: 700;
+    font-family: 'Figtree', sans-serif;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.divider {
+    margin-bottom: 20px;
+    margin-top: 12px;
+    display: block;
+    flex: 1 1 0;
+    max-width: 100%;
+    height: 0;
+    max-height: 0;
+    border: 0 solid currentcolor;
+    border-top-width: thin;
+    transition: inherit;
+}

@@ -1,0 +1,116 @@
+.footer {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+
+.sectionLayout {
+    width: 100%;
+    max-width: 1344px;
+    margin: 0 auto;
+    padding: 24px 12.5vw;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.leftSection {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.newsletter {
+    text-align: center;
+    flex: 0 0 50%;
+    max-width: 50%;
+    width: 100%;
+}
+
+.heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .0125em;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.input {
+    font-size: 16px;
+    border-radius: 12px;
+    color: #fff;
+    height: 40px;
+    box-sizing: border-box;
+    background: transparent;
+    transition: .3s cubic-bezier(.25, .8, .5, 1);
+    border-collapse: collapse;
+    border: 1px solid #2a2a2a;
+    padding: 0 16px 0 24px;
+    max-width: 539px;
+    width: 100%;
+}
+
+.input:focus, .input:hover {
+    outline: none;
+    border-color: #fff;
+    border-color: white;
+}
+
+.button {
+    height: 36px;
+    min-width: 64px;
+    padding: 0 16px;
+    background: transparent;
+    line-height: 1.5rem;
+    letter-spacing: .03125em;
+    border-radius: 9999px;
+    color: #fff;
+    caret-color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #2a2a2a;
+    transition: .3s cubic-bezier(.25, .8, .5, 1);
+}
+
+.button:hover {
+    border-color: white;
+}
+
+
+.checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 50px;
+}
+
+.checkboxLabel {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Figtree', sans-serif;
+    text-align: left;
+}
+
+.link {
+    color: #fff;
+    text-decoration: underline;
+}

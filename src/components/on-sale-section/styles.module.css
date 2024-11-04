@@ -1,0 +1,25 @@
+.sectionWrapper {
+    margin-top: 64px;
+}
+
+.viewAllItemsWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 144px;
+}
+
+.button {
+    background: #000;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: "Figtree", sans-serif;
+    font-weight: 700;
+    margin-top: 22px;
+    text-align: center;
+    color: white;
+    border: none;
+    padding: 5px 48px;
+    cursor: pointer;
+}
