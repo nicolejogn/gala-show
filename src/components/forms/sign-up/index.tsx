@@ -19,21 +19,24 @@ const schema = yup.object().shape({
 export const SignUpForm: React.FC = () => {
   const router = useRouter()
   const [checked, setChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
   const {register, handleSubmit, formState: {errors, isDirty, isValid}} = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange'
   });
-  console.log('checked', checked)
-  const isDisabled = !isDirty && !isValid && !checked;
 
+  const isDisabled = !isDirty || !isValid || !checked;
+  console.log('isDisabled', isDisabled)
   const onSubmit = async (data: { email: string; password: string }) => {
-    if (isDisabled) return;
-
+    setLoading(true)
     const res = await fetch('/api', {
       method: 'POST',
       body: JSON.stringify(data),
     });
     const json = await res.json();
+    setLoading(false)
+
+    console.log('json', json)
 
     if (json.data) router.push(routeConstants.VERIFY_EMAIL)
   };
@@ -75,7 +78,8 @@ export const SignUpForm: React.FC = () => {
             By continuing, you agree to the <a href="/terms">Terms & Conditions</a> and <a href="/privacy">Privacy
             Policy</a>
           </p>
-          <button type="submit" disabled={isDisabled} className={styles.continueButton}>Continue</button>
+          <button type="submit" disabled={isDisabled}
+                  className={styles.continueButton}>{loading ? "Wait..." : "Continue"} </button>
         </form>
 
         <p className={styles.login}>

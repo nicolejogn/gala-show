@@ -39,7 +39,7 @@ export async function POST(req: Request) {
         email: process.env.MAIL_DOMAIN as string,
       }
     ];
-    
+
     const res2 = await client.testing
       .send({
         from: sender,
@@ -55,6 +55,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({error: null, data: 'success'})
   } catch (e) {
+    console.log('e', e)
     return NextResponse.json({error: e, data: null})
   }
 }
