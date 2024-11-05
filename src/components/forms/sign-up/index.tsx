@@ -82,9 +82,7 @@ export const SignUpForm: React.FC = () => {
                   className={styles.continueButton}>{loading ? "Wait..." : "Continue"} </button>
         </form>
 
-        <p className={styles.login}>
-          Already have an account? <a href="/login">Log in</a>
-        </p>
+    
       </div>
     </div>
   );

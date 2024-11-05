@@ -62,7 +62,9 @@ export const NavBar = () => {
 
         <div className={styles.authButtons}>
           <button className={styles.buttonOutlined} onClick={navigateTo(navigate)}>Sign Up</button>
-          <button className={classNames(styles.buttonOutlined, styles.loginButton)}>Login</button>
+          <button onClick={navigateTo(navigate)}
+                  className={classNames(styles.buttonOutlined, styles.loginButton)}>Login
+          </button>
         </div>
       </div>
     </nav>

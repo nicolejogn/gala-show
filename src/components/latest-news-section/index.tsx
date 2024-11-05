@@ -29,7 +29,7 @@ export function LatestNewsSection() {
                 className={styles.input}
                 required
               />
-              <button onClick={navigateTo(navigate)} type="submit" className={styles.button}>
+              <button onClick={navigateTo(navigate)} type="button" className={styles.button}>
                 Sign Up
               </button>
             </form>

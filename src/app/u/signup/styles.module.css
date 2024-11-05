@@ -4,7 +4,7 @@
     justify-content: center;
     height: 100vh;
     background-color: #121212;
-    animation: fadeInBlur 0.8s ease-out;
+    animation: fadeInBlur 0.3s ease-out;
 }
 
 .form {

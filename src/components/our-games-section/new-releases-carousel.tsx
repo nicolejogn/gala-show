@@ -1,6 +1,8 @@
 import styles from './styles.module.css';
 import classNames from "classnames";
 import {ArrowsIconLeft, ArrowsIconRight} from "@/components/icons/arrows-icon";
+import {navigateTo} from "../../../utils/navigation";
+import {useRouter} from "next/navigation";
 
 
 const games = [
@@ -13,14 +15,16 @@ const games = [
 ];
 
 export const Carousel = () => {
+  const navigate = useRouter()
+  
   return (
     <div className={styles.carouselContainer}>
       <button className={classNames(styles.swiper)}><ArrowsIconLeft/></button>
       <div className={styles.carousel}>
         {games.map((game) => (
-          <div key={game.title} className={styles.carouselItem}>
+          <button type='button' onClick={navigateTo(navigate)} key={game.title} className={styles.carouselItem}>
             <img src={game.image} alt={game.title} className={styles.gameImage}/>
-          </div>
+          </button>
         ))}
       </div>
 

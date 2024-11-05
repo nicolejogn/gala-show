@@ -8,7 +8,6 @@
 }
 
 .form {
-    width: 400px;
     background: #0a0a0a;
     box-sizing: border-box;
     max-width: 400px;
@@ -162,6 +161,57 @@
 .inputWrapper {
     position: relative;
     width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .form {
+        max-width: calc(100% - 40px);
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .socialButton {
+        font-size: 14px;
+    }
+
+    .divider {
+        font-size: 12px;
+    }
+
+    .input {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .captcha {
+        font-size: 12px;
+        height: 55px;
+    }
+
+    .terms {
+        font-size: 10px;
+    }
+
+    .continueButton {
+        font-size: 14px;
+        height: 36px;
+    }
+
+    .login {
+        font-size: 12px;
+    }
+
+    .error {
+        font-size: 10px;
+        bottom: -10px;
+    }
 }
 
 @keyframes fadeInBlur {

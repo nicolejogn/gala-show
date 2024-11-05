@@ -114,3 +114,39 @@
     color: #fff;
     text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heading {
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .leftSection, .newsletter {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .checkboxGroup {
+        align-items: center;
+    }
+}
