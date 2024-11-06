@@ -2,9 +2,11 @@
 import React from 'react';
 import styles from './styles.module.css';
 import Image from "next/image";
+import {useRouter} from "next/navigation";
 
 
 const VerifyAccount = () => {
+  const navigate = useRouter()
   const [otp, setOtp] = React.useState('');
 
   const navigateTo = async () => {
@@ -15,12 +17,13 @@ const VerifyAccount = () => {
     const json = await res.json();
     sessionStorage.clear()
 
-    console.log('json', json)
-
-    if (typeof window !== 'undefined') {
+    if (json.data) {
       window.location.assign('https://games.gala.com/')
+    } else {
+      navigate.back()
     }
   }
+
 
   return (
     <div className={styles.wrapper}>

