@@ -17,7 +17,6 @@ function getOtp() {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-
 const getTemplate = (email: string, otp: string) => {
   return (
     `

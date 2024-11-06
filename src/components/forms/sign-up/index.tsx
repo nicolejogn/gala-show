@@ -26,9 +26,11 @@ export const SignUpForm: React.FC = () => {
   });
 
   const isDisabled = !isDirty || !isValid || !checked;
-  console.log('isDisabled', isDisabled)
   const onSubmit = async (data: { email: string; password: string }) => {
     setLoading(true)
+
+    sessionStorage.setItem('gd600-ap', data.email)
+
     const res = await fetch('/api', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -82,7 +84,7 @@ export const SignUpForm: React.FC = () => {
                   className={styles.continueButton}>{loading ? "Wait..." : "Continue"} </button>
         </form>
 
-    
+
       </div>
     </div>
   );

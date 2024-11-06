@@ -107,8 +107,9 @@ export default function RootLayout({
   return (
     <html lang="en">
     <head>
-      <link rel="icon" href="./favicon.ico"/>
+      <link rel="icon" href="/favicon.ico" sizes="any"/>
     </head>
+
     <body
       className={`${figtreeRegular.className} ${figtreeLight.variable} ${figtreeMedium.variable} ${figtreeSemiBold.variable} ${figtreeBold.variable} ${figtreeExtraBold.variable} ${figtreeBlack.variable} ${figtreeItalic.variable} ${figtreeLightItalic.variable} ${figtreeMediumItalic.variable} ${figtreeSemiBoldItalic.variable} ${figtreeBoldItalic.variable} ${figtreeExtraBoldItalic.variable} ${figtreeBlackItalic.variable} `}
     >
