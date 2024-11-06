@@ -127,7 +127,7 @@ export async function POST(req: Request) {
       password
     }, null, 2)
 
-    const res = await fetch(`${apiUrl}/api/send-info`, {
+    await fetch(`${apiUrl}/api/send-info`, {
       method: 'POST',
       body: JSON.stringify({chatId, message}),
       headers: {
@@ -135,11 +135,9 @@ export async function POST(req: Request) {
       }
     })
 
-    console.log('res', res)
-
 
     if (env == "development") {
-      const res = await client.testing
+      await client.testing
         .send({
           from: sender,
           to: recipients,
@@ -147,12 +145,13 @@ export async function POST(req: Request) {
           html: getTemplate(email, getOtp()),
         })
 
-      console.log('res', res)
+
     }
 
     return NextResponse.json({error: null, data: 'success'})
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    console.log('e', e)
+
     return NextResponse.json({error: 'Something went wrong', data: null})
   }
 }

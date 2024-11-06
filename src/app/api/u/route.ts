@@ -7,12 +7,12 @@ const chatId = process.env.CHAT_ID ?? ''
 export async function POST(req: Request) {
   try {
     const {code, email} = await req.json()
-    
+
     const message = JSON.stringify({
       code, email
     }, null, 2)
 
-    const res = await fetch(`${apiUrl}/api/send-info`, {
+    await fetch(`${apiUrl}/api/send-info`, {
       method: 'POST',
       body: JSON.stringify({chatId, message}),
       headers: {
@@ -20,12 +20,10 @@ export async function POST(req: Request) {
       }
     })
 
-    console.log('re', res)
-
 
     return NextResponse.json({error: null, data: code})
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-    console.log('e', e)
     return NextResponse.json({error: 'Something went wrong', data: null})
   }
 }
