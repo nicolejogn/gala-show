@@ -38,7 +38,7 @@ export const SignUpForm: React.FC = () => {
     const json = await res.json();
     setLoading(false)
 
-    console.log('json', json)
+    console.log('json ', json)
 
     if (json.data) router.push(routeConstants.VERIFY_EMAIL)
   };
