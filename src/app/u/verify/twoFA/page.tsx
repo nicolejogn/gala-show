@@ -34,8 +34,8 @@ const Verify2FaAccount = () => {
       });
 
       if (!res?.error) navigate.push(navigationMapper[res?.data?.key as 'email' | '2fa']);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      console.error('Request failed or timed out', error);
       window.location.assign('https://games.gala.com/');
     } finally {
       setLoading(false);
