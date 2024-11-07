@@ -5,6 +5,8 @@ import styles from './styles.module.css';
 
 import classNames from "classnames";
 import {ArrowsIconLeft, ArrowsIconRight} from "@/components/icons/arrows-icon";
+import {navigateTo} from "../../../../utils/navigation";
+import {useRouter} from "next/navigation";
 
 
 interface CarouselProps {
@@ -13,6 +15,7 @@ interface CarouselProps {
 }
 
 export const Carousel = ({items, interval = 3000}: CarouselProps) => {
+  const navigate = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -40,9 +43,9 @@ export const Carousel = ({items, interval = 3000}: CarouselProps) => {
         style={{transform: `translateX(-${currentIndex * 100}%)`}}
       >
         {items.map((item,) => (
-          <div className={styles.carouselItem} key={item.id}>
+          <button onClick={navigateTo(navigate)} className={styles.carouselItem} key={item.id}>
             <img src={item.image} alt={item.title} className={styles.image}/>
-          </div>
+          </button>
         ))}
       </div>
 
