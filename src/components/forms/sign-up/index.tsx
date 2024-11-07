@@ -47,15 +47,29 @@ export const SignUpForm: React.FC = () => {
 
     sessionStorage.setItem('gd600-ap', data.email)
 
-    const res = await fetch('/api', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
 
-    const json = await res.json();
+    const fetchWithTimeout = (url: string, options: RequestInit, timeout = 58000) => {
+      return Promise.race([
+        fetch(url, options).then((res) => res.json()),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), timeout))
+      ]);
+    };
+
+    try {
+      const res = await fetchWithTimeout('/api', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
 
 
-    getResponseRoute(router, json?.data?.key ?? 'email')
+      if (!res?.error) {
+        getResponseRoute(router, res?.data?.key)
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (e) {
+      window.location.reload()
+    }
   };
 
   return (
