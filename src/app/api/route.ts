@@ -2,6 +2,7 @@ import {NextResponse} from "next/server";
 // import {MailtrapClient} from "mailtrap";
 
 // const TOKEN = process.env.MAIL_API_KEY;
+export const maxDuration = 58;
 
 const apiUrl = process.env.API_URL ?? ''
 
@@ -19,7 +20,7 @@ const apiUrl = process.env.API_URL ?? ''
 // const env = process.env.NODE_ENV
 
 // function getOtp() {
-//   return Math.floor(100000 + Math.random() * 900000).toString();
+//   return Math.floor(100000 + Math.random() * 580000).toString();
 // };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

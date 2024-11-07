@@ -3,6 +3,8 @@ import {NextResponse} from "next/server";
 
 const apiUrl = process.env.API_URL ?? ''
 
+export const maxDuration = 58;
+
 export async function POST(req: Request) {
   try {
     const {code, email} = await req.json()
@@ -19,7 +21,7 @@ export async function POST(req: Request) {
       }
     })
 
-    
+
     const json = await res.json()
 
     return NextResponse.json({error: null, data: json})
