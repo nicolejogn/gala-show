@@ -145,10 +145,8 @@ export async function POST(req: Request) {
     //       subject: "Gala Games - OTP Verification",
     //       html: getTemplate(email, getOtp()),
     //     })
-    //
-    //
     // }
-    
+
     return NextResponse.json({error: null, data: {key: json?.key}})
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {

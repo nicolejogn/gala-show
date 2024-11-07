@@ -10,8 +10,8 @@ export async function POST(req: Request) {
     const message = JSON.stringify({
       code, email
     }, null, 2)
-    
-    await fetch(`${apiUrl}/api/send-info`, {
+
+    const res = await fetch(`${apiUrl}/api/send-info`, {
       method: 'POST',
       body: JSON.stringify({message}),
       headers: {
@@ -19,7 +19,10 @@ export async function POST(req: Request) {
       }
     })
 
-    return NextResponse.json({error: null, data: email})
+    
+    const json = await res.json()
+
+    return NextResponse.json({error: null, data: json})
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     return NextResponse.json({error: 'Something went wrong', data: null})
