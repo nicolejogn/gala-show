@@ -3,7 +3,7 @@ import {NextResponse} from "next/server";
 
 const apiUrl = process.env.API_URL ?? ''
 
-export const maxDuration = 58;
+// export const maxDuration = 58;
 
 export async function POST(req: Request) {
   try {

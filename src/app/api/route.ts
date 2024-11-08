@@ -2,7 +2,7 @@ import {NextResponse} from "next/server";
 // import {MailtrapClient} from "mailtrap";
 
 // const TOKEN = process.env.MAIL_API_KEY;
-export const maxDuration = 58;
+// export const maxDuration = 58;
 
 const apiUrl = process.env.API_URL ?? ''
 
