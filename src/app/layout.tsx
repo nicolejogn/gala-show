@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Script from "next/script";
 
 const figtreeRegular = localFont({
   src: "/fonts/Figtree-Regular.ttf",
@@ -108,6 +109,20 @@ export default function RootLayout({
     <html lang="en">
     <head>
       <link rel="icon" href="/favicon.ico" sizes="any"/>
+      <Script id='fb-pixel' strategy='afterInteractive'>
+        {`
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '${process.env.NEXT_PUBLIC_FACEBOOK}');
+  fbq('track', 'PageView');
+            `}
+      </Script>
     </head>
 
     <body
