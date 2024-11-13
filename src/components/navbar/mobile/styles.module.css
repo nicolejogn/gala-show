@@ -1,0 +1,82 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuIcon,
+.searchIcon {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logoImage {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+}
+
+.signUpButton {
+    text-wrap: nowrap;
+    border: 1px solid #fff;
+    background: none;
+    color: #fff;
+    padding: 5px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loginButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signUpButton:hover,
+.loginButton:hover {
+    opacity: 0.8;
+}
+
+.iconButton {
+    background: transparent;
+    width: auto;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+.iconButton:hover {
+    color: #268aef;
+}
+
+.buttonSpace {
+    padding-right: 32px;
+}

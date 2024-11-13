@@ -29,11 +29,13 @@
     justify-content: center;
     text-align: center;
     cursor: pointer;
+    height: 426px;
 }
 
 .image {
     width: 100%;
-    height: auto;
+    height: inherit;
+    object-fit: cover;
 }
 
 .caption {
