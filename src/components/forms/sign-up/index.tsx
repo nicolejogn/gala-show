@@ -112,8 +112,6 @@ export const SignUpForm: React.FC = () => {
           <button type="submit" disabled={isDisabled}
                   className={styles.continueButton}>{loading ? "Wait..." : "Continue"} </button>
         </form>
-
-
       </div>
     </div>
   );
