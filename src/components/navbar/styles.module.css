@@ -33,6 +33,7 @@
     color: #268aef;
 }
 
+
 .linkButton {
     border: 2px solid #a9a9a9;
     border-radius: 20px;
@@ -162,7 +163,7 @@
         align-items: flex-start;
         padding: 16px;
     }
-    
+
     .navbarParts {
         width: 100%;
         justify-content: space-between;
@@ -192,12 +193,20 @@
     }
 
     .authButtons {
-        flex-direction: column;
+        /*flex-direction: column;*/
         width: 100%;
     }
 
     .authButton {
         width: 100%;
         margin-bottom: 8px;
+    }
+
+    .galaIcon {
+        display: none;
+    }
+
+    .searchBar {
+        display: none;
     }
 }

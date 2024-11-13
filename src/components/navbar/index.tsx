@@ -11,11 +11,20 @@ import {GeneralIcon} from "@/components/icons/general-icon";
 import {GalaIcon} from "@/components/icons/gala-icon";
 import {Telegram} from "@/components/icons/telegram";
 import {useRouter} from "next/navigation";
+import {useWindowSize} from "@/hooks/window-size";
+import {NavbarMobile} from "@/components/navbar/mobile";
 
 
 export const NavBar = () => {
   const navigate = useRouter()
+  const {width} = useWindowSize()
 
+  const isMobiele = width <= 768
+
+
+  if (isMobiele) {
+    return <NavbarMobile/>
+  }
 
   return (
     <nav className={styles.navBar}>
@@ -25,7 +34,8 @@ export const NavBar = () => {
           <GeneralIcon/>
         </button>
 
-        <button onClick={navigateTo(navigate)} className={classNames(styles.iconButton, styles.buttonSpace)}
+        <button onClick={navigateTo(navigate)}
+                className={classNames(styles.iconButton, styles.buttonSpace, styles.galaIcon)}
                 type='button'>
           <GalaIcon/>
         </button>
