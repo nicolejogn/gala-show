@@ -11,22 +11,30 @@ export const NavbarMobile = () => {
   return (
     <nav className={styles.navbar}>
 
-      <div>
-        <button className={styles.menuIcon} onClick={navigateTo(navigate)}>☰</button>
-        {/*<button className={styles.searchIcon} onClick={navigateTo(navigate)}><Search/></button>*/}
+      <div className={styles.navbarContent}>
+        <button className={styles.menuIcon} onClick={navigateTo(navigate)}>
+          <img
+            src="/icons/menu.png"
+            alt="Games Logo"
+            className={styles.logoImage}
+          />
+        </button>
+        <button className={styles.searchIcon} onClick={navigateTo(navigate)}>
+          <img
+            src="/icons/search.png"
+            alt="Games Logo"
+            className={styles.logoImage}
+          />
+        </button>
       </div>
+
       <button onClick={navigateTo(navigate)} className={classNames(styles.iconButton, styles.buttonSpace)}
               type='button'>
-        <GeneralIcon/>
+        <GeneralIcon height={30}/>
       </button>
-      {/*<div className={styles.logo}>*/}
-      {/*  <img src="logo.svg" alt="Games Logo" className={styles.logoImage}/>*/}
-      {/*  <span>GAMES</span>*/}
-      {/*</div>*/}
 
       <div className={styles.rightSection}>
         <button className={styles.signUpButton} onClick={navigateTo(navigate)}>Sign Up</button>
-        <button className={styles.loginButton} onClick={navigateTo(navigate)}>Login</button>
       </div>
     </nav>
   );

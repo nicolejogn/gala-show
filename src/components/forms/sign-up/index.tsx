@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 import {CustomCheckbox} from '../../common/checkbox';
 import Image from 'next/image';
 import {useRouter} from "next/navigation";
-import {routeConstants} from "../../../../constants/route";
+import {routeConstants} from "@/constants/route";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const schema = yup.object().shape({

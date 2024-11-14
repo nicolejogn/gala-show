@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles.module.css';
 import Image from "next/image";
 import {useRouter} from "next/navigation";
-import {routeConstants} from "../../../../constants/route";
+import {routeConstants} from "@/constants/route";
 
 
 const navigationMapper = {

@@ -1,4 +1,4 @@
-import {routeConstants} from "../constants/route";
+import {routeConstants} from "@/constants/route";
 
 
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";

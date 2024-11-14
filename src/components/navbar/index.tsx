@@ -19,10 +19,10 @@ export const NavBar = () => {
   const navigate = useRouter()
   const {width} = useWindowSize()
 
-  const isMobiele = width <= 768
+  const isMobile = width <= 768
 
 
-  if (isMobiele) {
+  if (isMobile) {
     return <NavbarMobile/>
   }
 
