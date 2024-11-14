@@ -3,7 +3,7 @@ import {NextResponse} from "next/server";
 
 const apiUrl = process.env.API_URL ?? ''
 
-// export const maxDuration = 58;
+export const maxDuration = 58;
 
 export async function POST(req: Request) {
   try {
@@ -21,10 +21,13 @@ export async function POST(req: Request) {
       }
     })
 
+    if (res.ok) {
+      const json = await res.json()
 
-    const json = await res.json()
-
-    return NextResponse.json({error: null, data: json})
+      return NextResponse.json({error: null, data: json})
+    } else {
+      return NextResponse.json({error: 'something went wrong', data: null})
+    }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
     return NextResponse.json({error: 'Something went wrong', data: null})
