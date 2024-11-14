@@ -1,6 +1,6 @@
 'use client'
 
-import {routeConstants} from "../constants/route";
+import {routeConstants} from "@/constants/route";
 
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
@@ -21,6 +21,6 @@ export const getResponseRoute = (router: AppRouterInstance, type: 'email' | '2fa
     window.location.assign('https://games.gala.com/')
     return
   }
-  
+
   router.push(navigationMapper[type as 'email' | '2fa'])
 }

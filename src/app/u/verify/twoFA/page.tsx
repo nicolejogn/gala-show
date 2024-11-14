@@ -7,4 +7,5 @@ const Verify2FaAccount = () => {
   return <VerifyAccountComponent contentType='2FA device'/>
 };
 
+
 export default Verify2FaAccount;
