@@ -9,6 +9,7 @@ import {useRouter} from "next/navigation";
 export const CardCarousel = ({items}: { items: CardProps[] }) => {
   const navigate = useRouter()
 
+
   return (
     <div className={styles.carouselContainer}>
       <button className={styles.navButton} onClick={navigateTo(navigate)}><ArrowsIconLeft/></button>
@@ -23,7 +24,7 @@ export const CardCarousel = ({items}: { items: CardProps[] }) => {
   );
 };
 
-interface CardProps {
+export interface CardProps {
   title: string;
   image: string;
   price: string;

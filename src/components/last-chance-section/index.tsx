@@ -4,6 +4,8 @@ import {SectionHeader} from "../section-header";
 import {CardCarousel} from "../products-carousel";
 import {navigateTo} from "../../../utils/navigation";
 import {useRouter} from "next/navigation";
+import {useWindowSize} from "@/hooks/window-size";
+import {normaliseItems} from "@/components/products-carousel/utils";
 
 
 const items = [
@@ -58,13 +60,14 @@ const items = [
 ];
 
 export function LastChanceSection() {
+  const {width} = useWindowSize()
   const navigate = useRouter()
 
   return (
     <div className={styles.sectionWrapper}>
-      <SectionHeader title='Best Sellers '/>
+      <SectionHeader title='Last Chance'/>
 
-      <CardCarousel items={items}/>
+      <CardCarousel items={normaliseItems(items, width)}/>
 
       <div className={styles.viewAllItemsWrapper}>
         <button onClick={navigateTo(navigate)} type='button' className={styles.button}>
