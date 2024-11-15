@@ -34,6 +34,28 @@
     position: relative;
 }
 
+.carouselContainer::before {
+    content: "";
+    z-index: 2;
+    width: 10%;
+    max-width: 120px;
+    height: 100%;
+    display: block;
+    position: absolute;
+    rotate: 180deg;
+    left: 0;
+    background: linear-gradient(270deg, #161618, rgba(22, 22, 24, .9) 25%, rgba(22, 22, 24, 0));
+}
+
+.carouselContainer:after {
+    right: 0;
+    top: 0;
+    width: 10%;
+    position: absolute;
+    max-width: 120px;
+    background: linear-gradient(270deg, #161618, rgba(22, 22, 24, .9) 25%, rgba(22, 22, 24, 0));
+}
+
 .carouselContainer:hover .swiper {
     opacity: 1;
 }
@@ -46,27 +68,28 @@
 }
 
 .swiper {
-    transition: .3s;
-    opacity: 0;
     padding: 0;
-    z-index: 2;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 40px;
+    z-index: 3;
+    width: 40px;
+    height: 53px;
     display: flex;
     align-items: center;
-    background-color: hsla(0, 0%, 100%, .3);
+    background-color: #414146;
     position: absolute;
     cursor: pointer;
-    color: white;
+    top: 50%;
+    transform: translateY(-50%);
     border: none;
-    left: -34px;
+    left: 0;
+}
+
+.swiper > svg {
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, .3));
 }
 
 .right {
     left: auto;
-    right: -34px;
+    right: 0;
     justify-content: flex-end;
 }
 
@@ -75,6 +98,7 @@
 }
 
 .carouselItem {
+    padding: 0;
     display: block;
     position: relative;
     width: 260px;
@@ -96,7 +120,21 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
+
+.gameIcon {
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    max-height: 50px;
+    display: block;
+    max-width: 93%;
+    width: auto;
+    height: auto;
+}
+
 
 .overlay {
     position: absolute;
@@ -169,3 +207,30 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+    .headerContent {
+        margin-bottom: 34px;
+    }
+
+    .carouselItem {
+        width: 190px;
+        height: auto;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 30px;
+    }
+
+    .carousel {
+        gap: 10px;
+    }
+
+    .swiper {
+        opacity: 1;
+        width: 40px;
+        height: 53px;
+        background: #414146;
+    }
+
+}

@@ -8,6 +8,9 @@
     background: rgba(0, 0, 0, .6);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
+    position: static;
+    top: 0;
+    z-index: 9999999;
 }
 
 .navbarParts {

@@ -11,7 +11,7 @@ import {LatestNewsSection} from "@/components/latest-news-section";
 
 export default function Home() {
   return (
-    <div>
+    <div style={{position: 'relative'}}>
       <NavBar/>
       <BannerSection/>
       <OurGamesSection/>

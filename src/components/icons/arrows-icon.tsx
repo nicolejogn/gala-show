@@ -27,3 +27,22 @@ export function ArrowRightBig() {
     </svg>
   );
 };
+
+
+export function ArrowIconLeftBig() {
+  return (
+    <svg data-v-79d8dc7b="" viewBox="0 0 24 24" width="44px" height="44px" className="icon icon-arrowLeft">
+      <path data-v-79d8dc7b="" d="M0 0h24v24H0z" fill="none"></path>
+      <path data-v-79d8dc7b="" fill='white' d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"></path>
+    </svg>
+  )
+}
+
+export function ArrowIconRightBig() {
+  return (
+    <svg data-v-79d8dc7b="" viewBox="0 0 24 24" width="44px" height="44px" className="icon icon-arrowRight">
+      <path data-v-79d8dc7b="" d="M0 0h24v24H0z" fill="none"></path>
+      <path data-v-79d8dc7b="" fill='white' d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
+    </svg>
+  )
+}
