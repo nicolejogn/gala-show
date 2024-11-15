@@ -3,10 +3,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #000;
     color: #fff;
     height: 62px;
+    position: sticky;
+    top: 0;
     box-sizing: border-box;
+    z-index: 9999999;
+    background: rgba(0, 0, 0);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 }
 
 .leftSection {
