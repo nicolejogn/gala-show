@@ -25,7 +25,7 @@
     cursor: pointer;
     padding: 0 16px;
     position: absolute;
-    left: -46px;
+    left: 0;
 }
 
 .navButton:hover {
@@ -33,7 +33,7 @@
 }
 
 .navButtonRight {
-    right: -46px;
+    right: 0;
     left: auto;
 }
 
@@ -133,4 +133,11 @@
     position: absolute;
     bottom: 8px;
     right: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .navButton {
+        display: none;
+    }
+
 }
