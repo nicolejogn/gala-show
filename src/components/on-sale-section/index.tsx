@@ -1,6 +1,9 @@
+'use client'
 import {SectionHeader} from "../section-header";
 import styles from './styles.module.css'
 import {CardCarousel} from "../products-carousel";
+import {normaliseItems} from "@/components/products-carousel/utils";
+import {useWindowSize} from "@/hooks/window-size";
 
 
 const items = [
@@ -55,11 +58,13 @@ const items = [
 ];
 
 export function OnSaleSection() {
+  const {width} = useWindowSize()
+
   return (
     <div className={styles.sectionWrapper}>
       <SectionHeader title='On Sale'/>
 
-      <CardCarousel items={items}/>
+      <CardCarousel items={normaliseItems(items, width)}/>
     </div>
   );
 };
