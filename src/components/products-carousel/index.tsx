@@ -4,14 +4,11 @@ import {ArrowsIconLeft, ArrowsIconRight} from "@/components/icons/arrows-icon";
 import classNames from "classnames";
 import {navigateTo} from "../../../utils/navigation";
 import {useRouter} from "next/navigation";
-import {useWindowSize} from "@/hooks/window-size";
 
 
 export const CardCarousel = ({items}: { items: CardProps[] }) => {
-  const {width} = useWindowSize()
   const navigate = useRouter()
 
-  const isMobile = width <= 600;
 
   return (
     <div className={styles.carouselContainer}>
