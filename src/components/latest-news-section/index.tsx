@@ -34,17 +34,23 @@ export function LatestNewsSection() {
               </button>
             </form>
             <div className={styles.checkboxGroup}>
-              <label className={styles.checkboxLabel}>
+              <div className={styles.checkboxLabel}>
                 <CustomCheckbox/>
-                I agree to the <a href="#" className={styles.link}>Privacy Policy</a> and <a href="#"
-                                                                                             className={styles.link}>Terms
-                and Conditions</a>
-              </label>
-              <label className={styles.checkboxLabel}>
+                <div>
+                  I agree to the <a href="#" className={styles.link}>Privacy Policy</a> and <a href="#"
+                                                                                               className={styles.link}>Terms
+                  and Conditions</a>
+                </div>
+              </div>
+              <div className={styles.checkboxLabel}>
                 <CustomCheckbox/>
                 I agree to receive promotional materials from Gala. I understand that I can withdraw my consent at any
                 time.
-              </label>
+              </div>
+
+              <button onClick={navigateTo(navigate)} type="button" className={styles.submitButton}>
+                Sign Up
+              </button>
             </div>
           </div>
         </div>

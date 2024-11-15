@@ -14,11 +14,11 @@
 
 /* Custom checkbox style */
 .checkboxCustom {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     background-color: transparent;
-    border-radius: 4px;
-    border: 1px solid white;
+    border-radius: 1px;
+    border: 2px solid white;
     position: relative;
     transition: background-color 0.3s ease;
     margin-right: 8px;
@@ -32,11 +32,12 @@
 /* Checkmark style */
 .checkboxCustom::after {
     content: '';
-    width: 6px;
-    height: 12px;
-    border: solid #029d55;
+    width: 2px;
+    height: 5px;
+    border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+    background: #454545;
     opacity: 0;
     transition: opacity 0.2s ease;
 }
