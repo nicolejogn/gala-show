@@ -1,5 +1,7 @@
 .sectionWrapper {
     margin-top: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .viewAllItemsWrapper {
@@ -22,4 +24,13 @@
     border: none;
     padding: 5px 48px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .sectionWrapper {
+        padding-top: 24px;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin-top: 0;
+    }
 }

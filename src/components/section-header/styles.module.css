@@ -29,7 +29,18 @@
     max-width: 100%;
     height: 0;
     max-height: 0;
-    border: 0 solid currentcolor;
+    border: 0 solid hsla(0, 0%, 100%, .12);
     border-top-width: thin;
     transition: inherit;
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 19.2px;
+    }
+
+    .viewMore {
+        font-size: 17.6px;
+    }
+
 }
