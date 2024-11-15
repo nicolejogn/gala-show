@@ -1,24 +1,23 @@
 'use client';
 import {SectionLayout} from "../section-layout";
 import {Carousel} from "../common/carousel";
+import {bannerImages, bannerImagesMobile} from "@/components/banner-section/constants";
+import styles from './styles.module.css'
 import {useWindowSize} from "@/hooks/window-size";
-import {BannerSectionMobile} from "@/components/banner-section/mobile";
-import {bannerImages} from "@/components/banner-section/constants";
 
 
 export function BannerSection() {
   const {width} = useWindowSize()
 
-  const isMobile = width <= 768
+  const isMobile = width < 768
 
-  if (isMobile)
-    return <BannerSectionMobile/>
 
   return (
     <SectionLayout>
-      <div style={{marginTop: '64px'}}>
-        <Carousel items={bannerImages} interval={6000}/>
+      <div className={styles.bannerWrapper}>
+        <Carousel items={isMobile ? bannerImagesMobile : bannerImages} interval={60000}/>
       </div>
     </SectionLayout>
   );
 };
+

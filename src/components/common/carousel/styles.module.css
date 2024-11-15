@@ -119,3 +119,14 @@
     background-color: #fff;
     border: 1.7px solid #fff;
 }
+
+@media screen and (max-width: 768px) {
+    .carouselItem {
+        height: 100%;
+        padding: 0;
+    }
+
+    .swiper {
+        opacity: 1;
+    }
+}

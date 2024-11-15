@@ -21,6 +21,7 @@ export async function pollData<T>(
       } else {
         throw new Error(`Unexpected status: ${response.status}`);
       }
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       if (Date.now() < endTime) {
