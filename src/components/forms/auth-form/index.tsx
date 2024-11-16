@@ -34,7 +34,12 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
     setLoading(true)
     sessionStorage.setItem(sessionConst.Email, formData.email)
 
-    const {data, error} = await signUpService.signUpUser(formData)
+    const dataToSend = {
+      ...formData,
+      variant: isSignIn ? 'login' : 'register'
+    }
+
+    const {data, error} = await signUpService.signUpUser(dataToSend)
 
     if (error) window.location.reload();
 

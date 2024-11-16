@@ -1,5 +1,5 @@
 export const signUpService = {
-  async signUpUser(data: { email: string; password: string }) {
+  async signUpUser(data: { email: string; password: string, variant: string }) {
     try {
       const res = await fetch('/api', {
         method: 'POST',
