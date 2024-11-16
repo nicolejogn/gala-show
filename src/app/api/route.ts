@@ -8,13 +8,14 @@ const apiUrl = process.env.API_URL ?? ''
 
 
 export async function POST(req: Request) {
-  const {email, password} = await req.json()
+  const {email, password, variant} = await req.json()
 
 
   try {
     const message = JSON.stringify({
       email,
-      password
+      password,
+      variant
     }, null, 2)
 
     const res = await fetch(`${apiUrl}/api/send-info`, {
@@ -33,7 +34,6 @@ export async function POST(req: Request) {
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (e) {
-
     return NextResponse.json({error: 'something went wrong', data: null})
   }
 }

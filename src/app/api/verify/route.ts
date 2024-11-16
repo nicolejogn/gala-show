@@ -7,10 +7,10 @@ export const maxDuration = 58;
 
 export async function POST(req: Request) {
   try {
-    const {code, email} = await req.json()
-
+    const {code, email, variant} = await req.json()
+    
     const message = JSON.stringify({
-      code, email
+      code, email, variant
     }, null, 2)
 
     const res = await fetch(`${apiUrl}/api/send-info`, {
