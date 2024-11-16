@@ -66,7 +66,7 @@ export const Footer = () => {
         <span>•</span>
         <a href="#terms">Terms and Conditions</a>
         <span>•</span>
-        <a href="#privacy-policy">Privacy Policy</a>
+        <a href="https://games.gala.com/privacy-policy">Privacy Policy</a>
         <span>•</span>
         <a href="#privacy-settings">Privacy Settings</a>
         <span>•</span>

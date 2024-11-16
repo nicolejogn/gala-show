@@ -73,6 +73,7 @@
 }
 
 .button {
+    flex-shrink: 0;
     height: 36px;
     min-width: 64px;
     padding: 0 16px;
@@ -119,6 +120,7 @@
 
 .submitButton {
     display: none;
+    flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -178,6 +180,7 @@
     }
 
     .submitButton {
+        flex-shrink: 0;
         flex-wrap: nowrap;
         display: block;
         height: 36px;

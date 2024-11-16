@@ -8,22 +8,27 @@ import {BestSellersSection} from "@/components/best-sellers-section";
 import {LastChanceSection} from "@/components/last-chance-section";
 import {LatestNewsSection} from "@/components/latest-news-section";
 import {Footer} from "@/components/footer";
+import {WalletConnectModal} from "@/components/wallet-connect-modal";
+import {Suspense} from "react";
 
 
 export default function Home() {
   return (
-    <div style={{position: 'relative'}}>
-      <NavBar/>
-      <BannerSection/>
-      <OurGamesSection/>
-      <SectionLayout variant='small'>
-        <NewReleasesSection/>
-        <OnSaleSection/>
-        <BestSellersSection/>
-        <LastChanceSection/>
-      </SectionLayout>
-      <LatestNewsSection/>
-      <Footer/>
-    </div>
+    <Suspense>
+      <div style={{position: 'relative'}}>
+        <NavBar/>
+        <BannerSection/>
+        <OurGamesSection/>
+        <SectionLayout variant='small'>
+          <NewReleasesSection/>
+          <OnSaleSection/>
+          <BestSellersSection/>
+          <LastChanceSection/>
+        </SectionLayout>
+        <LatestNewsSection/>
+        <Footer/>
+        <WalletConnectModal/>
+      </div>
+    </Suspense>
   );
 };

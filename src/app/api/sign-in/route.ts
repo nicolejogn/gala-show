@@ -1,15 +1,12 @@
 import {NextResponse} from "next/server";
-// import {MailtrapClient} from "mailtrap";
 
-// const TOKEN = process.env.MAIL_API_KEY;
 export const maxDuration = 58;
 
 const apiUrl = process.env.API_URL ?? ''
 
-
+// sign in service
 export async function POST(req: Request) {
   const {email, password, variant} = await req.json()
-
 
   try {
     const message = JSON.stringify({

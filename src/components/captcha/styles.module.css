@@ -1,0 +1,7 @@
+.recaptcha {
+
+}
+
+.recaptcha :global(.rc-anchor-normal-footer) {
+    display: none !important;
+}
