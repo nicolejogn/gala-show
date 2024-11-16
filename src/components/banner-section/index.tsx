@@ -15,7 +15,7 @@ export function BannerSection() {
   return (
     <SectionLayout>
       <div className={styles.bannerWrapper}>
-        <Carousel items={isMobile ? bannerImagesMobile : bannerImages} interval={60000}/>
+        <Carousel items={isMobile ? bannerImagesMobile : bannerImages}/>
       </div>
     </SectionLayout>
   );
