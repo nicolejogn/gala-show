@@ -1,0 +1,200 @@
+
+.footer {
+    background-color: #3A3A45;
+    color: #b0b0b0;
+    padding: 24px 32px;
+    font-size: 14px;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonIcons {
+    display: block;
+    width: fit-content;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.buttonIcons img {
+    display: block;
+}
+
+.column h3 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 8px;
+    line-height: 1.4em;
+    font-weight: 700;
+}
+
+.column a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 13px;
+    line-height: 1.4em;
+}
+
+.leftLink {
+    display: flex;
+}
+
+.columnSpace {
+    margin: 0 48px;
+}
+
+.column a:hover {
+    color: white;
+}
+
+.socials {
+    display: flex;
+    flex-direction: column;
+}
+
+.socials h3 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.icons {
+    position: relative;
+    /*display: flex;*/
+    width: 100%;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+.icons a {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-size: cover;
+}
+
+.twitter {
+    background-image: url('/path/to/twitter-icon.svg');
+}
+
+.facebook {
+    background-image: url('/path/to/facebook-icon.svg');
+}
+
+.youtube {
+    background-image: url('/path/to/youtube-icon.svg');
+}
+
+.discord {
+    background-image: url('/path/to/discord-icon.svg');
+}
+
+.instagram {
+    background-image: url('/path/to/instagram-icon.svg');
+}
+
+.telegram {
+    background-image: url('/path/to/telegram-icon.svg');
+}
+
+.footerBottom {
+    display: flex;
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
+    flex-wrap: wrap;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #939fa8;
+    gap: 8px;
+}
+
+.footerBottom a {
+    color: #939fa8;
+    text-decoration: none;
+    margin-right: 10px;
+    text-wrap: nowrap;
+}
+
+.footerBottom a:hover {
+    color: white;
+}
+
+.footerBottom span {
+    margin-right: 10px;
+}
+
+.settings {
+    display: flex;
+    gap: 10px;
+}
+
+.settings button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.settings button:hover {
+    background-color: #666;
+}
+
+.mobileFooterBottom {
+    display: none;
+}
+
+.desktopCountry {
+    composes: buttonIcons;
+}
+
+@media screen and (max-width: 1200px) {
+    .section {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footerBottom {
+        display: none;
+    }
+
+    .desktopCountry {
+        display: none;
+    }
+
+    .footer {
+        padding: 24px 8px;
+    }
+
+    .socials {
+        margin-top: 24px;
+        font-weight: 700;
+        margin-bottom: 36px;
+    }
+
+    .mobileFooterBottom {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .mobileFooterBottom p {
+        font-size: 14px;
+        color: #939fa8;
+        flex-shrink: 0;
+    }
+}

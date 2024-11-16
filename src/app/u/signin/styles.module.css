@@ -2,12 +2,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #121212;
-    animation: fadeInBlur 0.8s ease-out;
+    animation: fadeInBlur 0.3s ease-out;
 }
 
 .form {
+    width: 400px;
     background: #0a0a0a;
     box-sizing: border-box;
     max-width: 400px;
@@ -17,6 +18,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.logo img {
+    width: 50px;
+    height: 50px;
+}
 
 .title {
     color: #ffffff;
@@ -60,7 +65,7 @@
 .emailForm {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
 .input {
@@ -72,7 +77,6 @@
     font-size: 16px;
     height: 48px;
     box-sizing: border-box;
-    width: 100%;
 }
 
 .input:focus {
@@ -127,15 +131,10 @@
     padding: 4px 16px;
     height: 40px;
     color: white;
-    cursor: pointer;
 }
 
 .continueButton:hover {
     background-color: #444444;
-}
-
-.continueButton:disabled {
-    cursor: not-allowed;
 }
 
 .login {
@@ -149,70 +148,6 @@
     text-decoration: underline;
 }
 
-.error {
-    font-size: 12px;
-    color: #df2424;
-    text-align: left;
-    position: absolute;
-    bottom: -15px;
-    left: 10px;
-}
-
-.inputWrapper {
-    position: relative;
-    width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-    .form {
-        max-width: calc(100% - 40px);
-        padding: 15px;
-    }
-
-    .title {
-        font-size: 20px;
-    }
-
-    .subtitle {
-        font-size: 14px;
-    }
-
-    .socialButton {
-        font-size: 14px;
-    }
-
-    .divider {
-        font-size: 12px;
-    }
-
-    .input {
-        font-size: 14px;
-        height: 40px;
-    }
-
-    .captcha {
-        font-size: 12px;
-        height: 55px;
-    }
-
-    .terms {
-        font-size: 10px;
-    }
-
-    .continueButton {
-        font-size: 14px;
-        height: 36px;
-    }
-
-    .login {
-        font-size: 12px;
-    }
-
-    .error {
-        font-size: 10px;
-        bottom: -10px;
-    }
-}
 
 @keyframes fadeInBlur {
     0% {

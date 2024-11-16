@@ -12,13 +12,14 @@ import {signUpService} from "@/services/sign-up";
 import {checkService} from "@/services/check";
 import {getResponseRoute} from "../../../../utils/navigation";
 import {sessionConst} from "@/constants/session";
+import {routeConstants} from "@/constants/route";
 
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-export const SignUpForm: React.FC = () => {
+export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
   const router = useRouter();
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -60,8 +61,7 @@ export const SignUpForm: React.FC = () => {
           <Image width={60} height={60} src="/icons/form-logo.png" alt="Logo"/>
         </div>
         <h2 className={styles.title}>Welcome</h2>
-        <p className={styles.subtitle}>Register to continue to Gala Games.</p>
-        <div className={styles.divider}>OR</div>
+        <p className={styles.subtitle}>{isSignIn ? "Log in" : "Register"} to continue to Gala Games.</p>
 
         <form className={styles.emailForm} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputWrapper}>
@@ -87,11 +87,20 @@ export const SignUpForm: React.FC = () => {
             <label htmlFor="captcha">Verify you are human</label>
           </div>
           <p className={styles.terms}>
-            By continuing, you agree to the <a href="/terms">Terms & Conditions</a> and <a href="/privacy">Privacy
+            By continuing, you agree to the <a href="https://policies.google.com/terms?hl=hy&fg=1">Terms &
+            Conditions</a> and <a href="https://policies.google.com/terms?hl=hy&fg=1">Privacy
             Policy</a>
           </p>
-          <button type="submit" disabled={isDisabled}
+          <button type="submit"
+                  disabled={isDisabled}
                   className={styles.continueButton}>{loading ? "Wait..." : "Continue"} </button>
+
+          {isSignIn && (
+            <div className={styles.loginLinkForm}>
+              <p>Don{"'"}t have an account?</p>
+              <a href={routeConstants.SIGN_UP}>Register</a>
+            </div>
+          )}
         </form>
       </div>
     </div>

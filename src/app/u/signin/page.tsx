@@ -3,12 +3,12 @@ import styles from './styles.module.css';
 import {AuthForm} from "@/components/forms/auth-form";
 
 
-export default function SignUp() {
+export default function SignIn() {
 
   return (
     <div className={styles.container}>
       <div>
-        <AuthForm isSignIn={false}/>
+        <AuthForm/>
       </div>
     </div>
   );

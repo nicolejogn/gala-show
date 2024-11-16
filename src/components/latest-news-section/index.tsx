@@ -44,7 +44,9 @@ export function LatestNewsSection() {
               </div>
               <div className={styles.checkboxLabel}>
                 <CustomCheckbox/>
-                I agree to receive promotional materials from Gala. I understand that I can withdraw my consent at any
+                I agree to receive promotional materials <br/> from Gala. I understand that I can withdraw <br/> my
+                consent
+                at any
                 time.
               </div>
 
