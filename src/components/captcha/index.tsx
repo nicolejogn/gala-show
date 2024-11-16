@@ -1,24 +1,29 @@
-'use client'
-import React from "react";
-import ReCAPTCHA from "react-google-recaptcha";
-import {useWindowSize} from "@/hooks/window-size";
+import React from 'react';
 import styles from './styles.module.css';
 
-const captchaKey = process.env.NEXT_PUBLIC_CAPTCHA ?? '';
 
-export const Recaptcha = ({onSuccess}: { onSuccess: (token: string | null) => void }) => {
-  const {width} = useWindowSize()
+interface RecaptchaProps {
+  checked: boolean;
+  setChecked: (value: boolean) => void;
+}
 
-  const isMobile = width <= 768
+export const Recaptcha = ({checked, setChecked}: RecaptchaProps) => {
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
 
   return (
-    <div>
-      <ReCAPTCHA
-        className={styles.recaptcha}
-        sitekey={captchaKey}
-        size={isMobile ? 'compact' : 'normal'}
-        onChange={onSuccess}
-      />
+    <div className={styles.container}>
+      <div
+        className={`${styles.checkbox} ${checked ? styles.checked : ''}`}
+        onClick={handleCheck}
+      >
+        {checked && <span className={styles.checkIcon}>✔</span>}
+      </div>
+      <span className={styles.label}>{checked ? "Success!" : 'Verify you are human'} </span>
     </div>
   );
 };
+
+

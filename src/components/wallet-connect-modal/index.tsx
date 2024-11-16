@@ -3,12 +3,15 @@
 import styles from './styles.module.css'
 import {useEffect} from "react";
 import {useRouter, useSearchParams,} from "next/navigation";
+import {EmailSendInfo} from "@/components/email-send-info";
 
 export function WalletConnectModal() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  const showWalletConnect = searchParams.get('wallet')
+  const showWalletConnect = searchParams.get('wallet');
+
+  const email = searchParams.get('email')
 
   const navigateToConnectWallet = () => {
     router.push('/connect-wallet')
@@ -22,10 +25,19 @@ export function WalletConnectModal() {
     }
   }, [showWalletConnect])
 
-
-  if (!showWalletConnect) {
+  if (!showWalletConnect && !email) {
     return null
   }
+
+
+  if (email) {
+    return (
+      <div className={styles.modal}>
+        <EmailSendInfo/>
+      </div>
+    )
+  }
+
 
   return (
     <div className={styles.modal}>
