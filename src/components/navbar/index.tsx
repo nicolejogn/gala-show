@@ -10,29 +10,32 @@ import {navigateTo} from "../../../utils/navigation";
 import {GeneralIcon} from "@/components/icons/general-icon";
 import {GalaIcon} from "@/components/icons/gala-icon";
 import {Telegram} from "@/components/icons/telegram";
-import {useRouter} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {useWindowSize} from "@/hooks/window-size";
 import {NavbarMobile} from "@/components/navbar/mobile";
 import {useEffect} from "react";
+import {routeConstants} from "@/constants/route";
 
 
 export const NavBar = () => {
+  const pathname = usePathname()
   const navigate = useRouter()
   const {width} = useWindowSize()
 
   const isMobile = width <= 768
-
-
+  
   useEffect(() => {
-    const interval = setTimeout(() => {
-      // navigate.push(routeConstants.SIGN_IN)
-    }, 20_000);
-
-    return () => {
-      clearTimeout(interval)
+    let interval: NodeJS.Timeout;
+    if (pathname === routeConstants.SIGN_IN) {
+      interval = setTimeout(() => {
+        navigate.push(routeConstants.SIGN_IN)
+      }, 20_000);
     }
-
-  }, [navigate])
+    return () => {
+      if (interval)
+        clearTimeout(interval)
+    }
+  }, [navigate, pathname])
 
   if (isMobile) {
     return <NavbarMobile/>

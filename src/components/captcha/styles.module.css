@@ -1,7 +1,44 @@
-.recaptcha {
-
+.container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    background: white;
+    height: 65px;
+    padding-left: 16px;
 }
 
-.recaptcha :global(.rc-anchor-normal-footer) {
-    display: none !important;
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #6d6d6d;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+.checkbox.checked {
+    background-color: #038127;
+    border-color: #038127;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.checkIcon {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+.label {
+    margin-left: 8px;
+    color: #232323;
+    font-family: -apple-system, system-ui, blinkmacsystemfont, Segoe UI, roboto, oxygen, ubuntu, Helvetica Neue, arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
 }

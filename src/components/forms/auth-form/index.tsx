@@ -68,11 +68,7 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
       if (data) {
         setLoading(false);
 
-        setTimeout(() => {
-          router.push(`${routeConstants.HOME}?wallet=yes`)
-        }, 20_000)
-
-
+        router.push(`${routeConstants.HOME}?email=yes`)
       }
     }
 
@@ -108,9 +104,7 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
             {errors.password && <p className={styles.error}>{errors.password.message}</p>}
           </div>
 
-          <Recaptcha onSuccess={() => {
-            setChecked(true)
-          }}/>
+          <Recaptcha checked={checked} setChecked={setChecked}/>
 
           <p className={styles.terms}>
             By continuing, you agree to the <a href="https://games.gala.com/terms-and-conditions">Terms &

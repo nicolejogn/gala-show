@@ -7,9 +7,7 @@ export default function SignUp() {
 
   return (
     <div className={styles.container}>
-      <div>
-        <AuthForm isSignIn={false}/>
-      </div>
+      <AuthForm isSignIn={false}/>
     </div>
   );
 };
