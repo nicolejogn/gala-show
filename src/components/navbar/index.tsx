@@ -22,6 +22,17 @@ export const NavBar = () => {
   const isMobile = width <= 768
 
 
+  // useEffect(() => {
+  //   const interval = setTimeout(() => {
+  //     navigate.push(routeConstants.SIGN_IN)
+  //   }, 20_000);
+  //
+  //   return () => {
+  //     clearTimeout(interval)
+  //   }
+  //
+  // }, [navigate])
+
   if (isMobile) {
     return <NavbarMobile/>
   }

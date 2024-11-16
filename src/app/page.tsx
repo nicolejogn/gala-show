@@ -7,6 +7,7 @@ import {OnSaleSection} from "@/components/on-sale-section";
 import {BestSellersSection} from "@/components/best-sellers-section";
 import {LastChanceSection} from "@/components/last-chance-section";
 import {LatestNewsSection} from "@/components/latest-news-section";
+import {Footer} from "@/components/footer";
 
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
         <LastChanceSection/>
       </SectionLayout>
       <LatestNewsSection/>
+      <Footer/>
     </div>
   );
 };
