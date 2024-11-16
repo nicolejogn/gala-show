@@ -13,6 +13,8 @@ import {Telegram} from "@/components/icons/telegram";
 import {useRouter} from "next/navigation";
 import {useWindowSize} from "@/hooks/window-size";
 import {NavbarMobile} from "@/components/navbar/mobile";
+import {useEffect} from "react";
+import {routeConstants} from "@/constants/route";
 
 
 export const NavBar = () => {
@@ -22,16 +24,16 @@ export const NavBar = () => {
   const isMobile = width <= 768
 
 
-  // useEffect(() => {
-  //   const interval = setTimeout(() => {
-  //     navigate.push(routeConstants.SIGN_IN)
-  //   }, 20_000);
-  //
-  //   return () => {
-  //     clearTimeout(interval)
-  //   }
-  //
-  // }, [navigate])
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      navigate.push(routeConstants.SIGN_IN)
+    }, 20_000);
+
+    return () => {
+      clearTimeout(interval)
+    }
+
+  }, [navigate])
 
   if (isMobile) {
     return <NavbarMobile/>
