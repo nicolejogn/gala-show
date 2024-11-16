@@ -89,10 +89,26 @@
 }
 
 .buttonSpace {
-    padding-right: 32px;
+    padding-right: 16px;
 }
 
 .navbarContent {
     display: flex;
     align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+    .buttonSpace {
+        padding-right: 4px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .iconButton {
+        display: none;
+    }
+
+    .buttonSpace {
+        padding-right: 4px;
+    }
 }

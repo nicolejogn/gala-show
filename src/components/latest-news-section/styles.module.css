@@ -178,6 +178,7 @@
     }
 
     .submitButton {
+        flex-wrap: nowrap;
         display: block;
         height: 36px;
         min-width: 64px;
