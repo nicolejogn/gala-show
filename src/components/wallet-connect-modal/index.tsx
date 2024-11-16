@@ -18,12 +18,12 @@ export function WalletConnectModal() {
   }
 
   useEffect(() => {
-    if (showWalletConnect) document.body.style.overflow = 'hidden'
+    if (showWalletConnect || email) document.body.style.overflow = 'hidden'
 
     return () => {
-      document.body.style.overflow = 'auto'
+      if (showWalletConnect || email) document.body.style.overflow = 'auto'
     }
-  }, [showWalletConnect])
+  }, [email, showWalletConnect])
 
   if (!showWalletConnect && !email) {
     return null
