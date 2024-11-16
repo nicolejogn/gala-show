@@ -180,6 +180,7 @@
     }
 
     .searchBar {
+        display: none;
         width: 100%;
         margin-bottom: 16px;
     }
@@ -196,7 +197,6 @@
     }
 
     .authButtons {
-        /*flex-direction: column;*/
         width: 100%;
     }
 
@@ -208,8 +208,10 @@
     .galaIcon {
         display: none;
     }
+}
 
-    .searchBar {
-        display: none;
+@media screen and (max-width: 500px) {
+    .buttonSpace {
+        padding-right: 4px;
     }
 }

@@ -72,10 +72,7 @@
 
 .icons {
     position: relative;
-    /*display: flex;*/
     width: 100%;
-    /*align-items: center;*/
-    /*justify-content: center;*/
 }
 
 .icons a {
@@ -85,34 +82,8 @@
     background-size: cover;
 }
 
-.twitter {
-    background-image: url('/path/to/twitter-icon.svg');
-}
-
-.facebook {
-    background-image: url('/path/to/facebook-icon.svg');
-}
-
-.youtube {
-    background-image: url('/path/to/youtube-icon.svg');
-}
-
-.discord {
-    background-image: url('/path/to/discord-icon.svg');
-}
-
-.instagram {
-    background-image: url('/path/to/instagram-icon.svg');
-}
-
-.telegram {
-    background-image: url('/path/to/telegram-icon.svg');
-}
-
 .footerBottom {
     display: flex;
-    /*align-items: center;*/
-    /*justify-content: space-between;*/
     flex-wrap: wrap;
     padding-top: 15px;
     font-size: 14px;
@@ -196,5 +167,13 @@
         font-size: 14px;
         color: #939fa8;
         flex-shrink: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .mobileFooterBottom {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 8px;
     }
 }

@@ -14,7 +14,6 @@ import {useRouter} from "next/navigation";
 import {useWindowSize} from "@/hooks/window-size";
 import {NavbarMobile} from "@/components/navbar/mobile";
 import {useEffect} from "react";
-import {routeConstants} from "@/constants/route";
 
 
 export const NavBar = () => {
@@ -26,7 +25,7 @@ export const NavBar = () => {
 
   useEffect(() => {
     const interval = setTimeout(() => {
-      navigate.push(routeConstants.SIGN_IN)
+      // navigate.push(routeConstants.SIGN_IN)
     }, 20_000);
 
     return () => {

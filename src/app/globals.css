@@ -42,6 +42,7 @@ body {
     font-weight: 400; /* Default weight */
     font-style: normal; /* Default style */
     background: #161618;
+    overflow-x: hidden;
 }
 
 ol, ul {

@@ -7,7 +7,7 @@ import {GeneralIcon} from "@/components/icons/general-icon";
 
 export const NavbarMobile = () => {
   const navigate = useRouter()
-
+  
   return (
     <nav className={styles.navbar}>
 
