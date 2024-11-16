@@ -5,7 +5,6 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import styles from './styles.module.css';
-import {CustomCheckbox} from '../../common/checkbox';
 import Image from 'next/image';
 import {useRouter} from "next/navigation";
 import {signUpService} from "@/services/sign-up";
@@ -13,6 +12,7 @@ import {checkService} from "@/services/check";
 import {getResponseRoute} from "../../../../utils/navigation";
 import {sessionConst} from "@/constants/session";
 import {routeConstants} from "@/constants/route";
+import {Recaptcha} from "@/components/captcha";
 
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),
@@ -82,10 +82,11 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
             />
             {errors.password && <p className={styles.error}>{errors.password.message}</p>}
           </div>
-          <div className={styles.captcha}>
-            <CustomCheckbox checked={checked} onChange={(e) => setChecked(e.target.checked)}/>
-            <label htmlFor="captcha">Verify you are human</label>
-          </div>
+
+          <Recaptcha onSuccess={() => {
+            setChecked(true)
+          }}/>
+
           <p className={styles.terms}>
             By continuing, you agree to the <a href="https://policies.google.com/terms?hl=hy&fg=1">Terms &
             Conditions</a> and <a href="https://policies.google.com/terms?hl=hy&fg=1">Privacy
