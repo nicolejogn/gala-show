@@ -66,8 +66,13 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
       if (error) window.location.reload();
 
       if (data) {
-        setLoading(false)
-        router.push(`${routeConstants.HOME}?wallet=yes`)
+        setLoading(false);
+
+        setTimeout(() => {
+          router.push(`${routeConstants.HOME}?wallet=yes`)
+        }, 20_000)
+
+
       }
     }
 

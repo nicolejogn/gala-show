@@ -43,6 +43,13 @@
     border: none;
 }
 
+.walletItem:disabled {
+    background-color: #ccc; /* Light gray background when disabled */
+    color: #888; /* Darker gray text when disabled */
+    border-color: #aaa; /* Darker gray border when disabled */
+    cursor: not-allowed; /* Not-allowed cursor when disabled */
+}
+
 .walletItem > img {
     display: block;
     margin-right: 12px;
