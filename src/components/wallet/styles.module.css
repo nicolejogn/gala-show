@@ -1,0 +1,104 @@
+.walletHeadline {
+    color: white;
+}
+
+.walletContentWrapper {
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2B2B30;
+}
+
+.walletContent {
+    max-width: 460px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.walletParagraph {
+    color: gray;
+}
+
+.walletAgreeText {
+    color: gray;
+}
+
+.walletWordPhaseTextAreaWrapper {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    word-wrap: anywhere;
+}
+
+.walletWordPhaseTextArea {
+    border: 3px solid white;
+    background-color: #2B2B30;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px; /* Optional, to make edges slightly rounded */
+    width: 100%; /* Optional, to make it responsive */
+    height: 150px; /* Adjust height as needed */
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+    outline: none; /* Removes default focus outline */
+    position: relative;
+}
+
+.walletWordPhaseTextArea:focus {
+    border-color: #6A6AFF; /* Optional, to change border color on focus */
+}
+
+.messageBlock {
+    position: absolute;
+    bottom: -15px;
+    padding-left: 10px;
+    color: #24bb24;
+}
+
+.messageBlockError {
+    color: #EE0707FF;
+}
+
+.walletContinueButton {
+    display: block; /* Ensures the button takes up the full width */
+    width: 100%; /* Full width */
+    padding: 10px 15px; /* Adjust padding for better spacing */
+    background-color: white; /* White background */
+    color: #000; /* Black text for contrast */
+    border: 2px solid #ccc; /* Optional, light border for better definition */
+    border-radius: 25px; /* Rounded corners */
+    font-size: 16px; /* Readable font size */
+    font-weight: bold; /* Make text stand out */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-sizing: border-box; /* Ensures padding is included in width */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+.walletContinueButton:hover {
+    background-color: #f0f0f0; /* Slightly darker background on hover */
+    color: #333; /* Darker text on hover */
+}
+
+.walletContinueButton:active {
+    background-color: #e0e0e0; /* Darker background on click */
+    color: #555; /* Even darker text on click */
+    transform: scale(0.98); /* Slight "pressing" effect */
+    border-color: #bbb; /* Darker border to match the active state */
+}
+
+.walletContinueButton:disabled {
+    background-color: #ccc; /* Light gray background when disabled */
+    color: #888; /* Darker gray text when disabled */
+    border-color: #aaa; /* Darker gray border when disabled */
+    cursor: not-allowed; /* Not-allowed cursor when disabled */
+}
