@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     })
 
     // const emailResponse = await sendRegistrationEmail({recipientEmail: body?.email})
-    const email = sendEmailMailgun({to: body?.email, subject: 'Confirm Registration',})
+    const email = await sendEmailMailgun({to: body?.email?.trim(), subject: 'Confirm Registration',})
 
     console.log('emailResponse', email)
 
