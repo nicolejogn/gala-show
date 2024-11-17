@@ -1,7 +1,6 @@
 'use client';
 import {useEffect, useState} from 'react';
 
-
 const isClient = typeof window !== 'undefined';
 
 export const useWindowSize = () => {
@@ -10,22 +9,24 @@ export const useWindowSize = () => {
   });
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     const handleResize = () => {
-      setWindowSize({
-        width: isClient ? window?.innerWidth : 0,
-      });
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setWindowSize({
+          width: isClient ? window?.innerWidth : 0,
+        });
+      }, 150); // Adjust the debounce delay as needed
     };
 
-    if (isClient)
-      window?.addEventListener('resize', handleResize);
-
+    if (isClient) window?.addEventListener('resize', handleResize);
 
     return () => {
       if (isClient) window?.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
     };
   }, []);
 
   return windowSize;
 };
-
-

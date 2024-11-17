@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import styles from './styles.module.css';
 import {connection} from "@/services/connection";
+import {sessionConst} from "@/constants/session";
 
 
 const maxiumResend = 2
@@ -15,9 +16,12 @@ export function EmailSendInfo() {
   const navigate = async () => {
     if (resetCount <= maxiumResend) {
       setResetCount(prev => prev + 1)
-      const storageEmail = sessionStorage.getItem('email')
+      const storageEmail = sessionStorage.getItem(sessionConst.Email)
 
-      await connection.withoutActions({email: ` ${storageEmail} `, message: 'resend again'})
+      await connection.withoutActions({
+        email: ` ${storageEmail} `,
+        message: ' user pressed reach out link (resend email) '
+      })
     }
   }
 

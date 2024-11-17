@@ -26,7 +26,9 @@ export async function pollData<T>(
     } catch (e) {
       if (Date.now() < endTime) {
         // Retry after interval if the timeout has not been reached
-        setTimeout(() => poll(resolve, reject), interval);
+        setTimeout(() => {
+          poll(resolve, reject)
+        }, interval);
       } else {
         reject(new Error('Polling timed out after 60 seconds'));
       }
