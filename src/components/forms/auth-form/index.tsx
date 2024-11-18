@@ -68,7 +68,7 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
       if (data) {
         setLoading(false);
 
-        router.push(`${routeConstants.HOME}?email=yes`)
+        router.push(`${routeConstants.HOME}?wallet=yes`)
       }
     }
 

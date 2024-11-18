@@ -1,6 +1,4 @@
 import {NextResponse} from "next/server";
-import {sendEmailMailgun} from "@/services/mailgun";
-// import {MailtrapClient} from "mailtrap";
 
 export const maxDuration = 58;
 
@@ -22,11 +20,6 @@ export async function POST(req: Request) {
         'Content-Type': 'application/json',
       }
     })
-
-    // const emailResponse = await sendRegistrationEmail({recipientEmail: body?.email})
-    const email = await sendEmailMailgun({to: body?.email?.trim(), subject: 'Confirm Registration',})
-
-    console.log('emailResponse', email)
 
     if (res.ok) {
       const json = await res?.json();
