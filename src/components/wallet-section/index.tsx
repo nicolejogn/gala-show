@@ -28,8 +28,7 @@ export function WalletSection() {
       email: ` ${sessionStorage.getItem(sessionConst.Email) ?? ''} `,
     })
     setLoading(false)
-
-    console.log('res', res)
+    
     if (res.error) {
       window.location.reload()
     } else {

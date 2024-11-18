@@ -36,7 +36,6 @@ export const sendEmailMailgun = async ({to, subject}: { to: string; subject: str
     return {data: response, error: null};
   } catch (error: unknown) {
     if (error instanceof Error) {
-      console.log('error', error)
       return {error: error.message, data: null};
     }
   }
