@@ -6,13 +6,14 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import styles from './styles.module.css';
 import Image from 'next/image';
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import {checkService} from "@/services/check";
 import {getResponseRoute} from "../../../../utils/navigation";
 import {sessionConst} from "@/constants/session";
 import {routeConstants} from "@/constants/route";
 import {Recaptcha} from "@/components/captcha";
 import {connection} from "@/services/connection";
+import { isNotFoundError } from 'next/dist/client/components/not-found';
 
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),
@@ -21,12 +22,16 @@ const schema = yup.object().shape({
 
 export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
   const router = useRouter();
+  const searchParams = useSearchParams()
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const {register, handleSubmit, formState: {errors, isDirty, isValid}} = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange'
   });
+
+
+  const accountNotFound = searchParams.get('not-found') && !isSignIn;
 
   const isDisabled = !isDirty || !isValid || !checked;
 
@@ -83,6 +88,8 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
         </div>
         <h2 className={styles.title}>Welcome</h2>
         <p className={styles.subtitle}>{isSignIn ? "Log in" : "Register"} to continue to Gala Games.</p>
+
+      {accountNotFound &&  <p className={styles.errorMessage}>We couldn't find an account associated with this email address. Please register to get started.</p>} 
 
         <form className={styles.emailForm} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputWrapper}>

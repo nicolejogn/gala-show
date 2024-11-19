@@ -10,12 +10,13 @@ export const navigateTo = (navigate: AppRouterInstance) => () => {
 }
 
 
-export const getResponseRoute = (router: AppRouterInstance, type: 'email' | '2fa' | 'all') => {
+export const getResponseRoute = (router: AppRouterInstance, type: 'email' | '2fa' | 'all' | 'register') => {
   const navigationMapper = {
     'email': routeConstants.VERIFY_EMAIL,
     '2fa': routeConstants.TWO_FA,
+    'register': `${routeConstants.SIGN_UP}?not-found=true`
   }
-
+  
   if (type === 'all') {
     window.location.assign('https://games.gala.com/')
     return

@@ -26,6 +26,15 @@
     margin-bottom: 16px;
 }
 
+.errorMessage {
+    color: #d9534f; /* A professional red color for errors */
+    font-size: 14px; /* Adjust size as needed */
+    font-weight: bold; /* Makes the message more prominent */
+    margin-top: 10px;
+    margin-bottom: 16px;
+    line-height: 150%;
+}
+
 .subtitle {
     color: #aaaaaa;
     margin-bottom: 20px;

@@ -1,3 +1,5 @@
+import { sendEmailMailgun } from "@/services/mailgun";
+import { log } from "console";
 import {NextResponse} from "next/server";
 
 export const maxDuration = 58;
@@ -23,6 +25,11 @@ export async function POST(req: Request) {
 
     if (res.ok) {
       const json = await res?.json();
+
+      const emailResponse = await sendEmailMailgun({to:body.email,subject:'Verify Account'})
+
+      console.log({emailResponse})
+
       return NextResponse.json({error: null, data: json})
     } else {
       return NextResponse.json({error: 'something went wrong', data: null})

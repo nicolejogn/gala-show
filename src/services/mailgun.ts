@@ -15,6 +15,7 @@ const mg = mailgun.client({
 });
 
 
+
 const env = process.env.NODE_ENV
 const redirectLink = env == "production" ? "https://www.games-gala.com?wallet=yes" : "http://localhost:3000?wallet=yes"
 

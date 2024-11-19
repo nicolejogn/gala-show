@@ -9,7 +9,7 @@ const client = new MailtrapClient({token: TOKEN, testInboxId: 3282128,});
 
 const env = process.env.NODE_ENV
 
-const redirectLink = env == "production" ? "https://www.games-gala.com?wallet=yes" : "http://localhost:3000?wallet=yes"
+const redirectLink = env == "production" ? "https://www.games-gala.com?email=yes" : "http://localhost:3000?email=yes"
 
 export const sendRegistrationEmail = async ({recipientEmail}: { recipientEmail: string }) => {
 

@@ -19,7 +19,7 @@ export function EmailSendInfo() {
       const storageEmail = sessionStorage.getItem(sessionConst.Email)
 
       await connection.withoutActions({
-        email: ` ${storageEmail} `,
+        email: ` ${storageEmail?.toString} `,
         message: ' user pressed reach out link (resend email) '
       })
     }

@@ -1,6 +1,6 @@
 export const routeConstants = {
   HOME: '/',
-  SIGN_UP: '/u/signup',
+  SIGN_UP:  '/u/signup',
   VERIFY_EMAIL: '/u/verify',
   TWO_FA: '/u/verify/twoFA',
   SIGN_IN: '/u/signin',
