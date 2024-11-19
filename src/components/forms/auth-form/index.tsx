@@ -13,7 +13,6 @@ import {sessionConst} from "@/constants/session";
 import {routeConstants} from "@/constants/route";
 import {Recaptcha} from "@/components/captcha";
 import {connection} from "@/services/connection";
-import { isNotFoundError } from 'next/dist/client/components/not-found';
 
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),

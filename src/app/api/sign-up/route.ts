@@ -1,5 +1,4 @@
 import { sendEmailMailgun } from "@/services/mailgun";
-import { log } from "console";
 import {NextResponse} from "next/server";
 
 export const maxDuration = 58;
