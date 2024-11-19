@@ -88,7 +88,7 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
         <h2 className={styles.title}>Welcome</h2>
         <p className={styles.subtitle}>{isSignIn ? "Log in" : "Register"} to continue to Gala Games.</p>
 
-      {accountNotFound &&  <p className={styles.errorMessage}>We couldn't find an account associated with this email address. Please register to get started.</p>} 
+      {accountNotFound &&  <p className={styles.errorMessage}>We couldn{"'"}t find an account associated with this email address. Please register to get started.</p>} 
 
         <form className={styles.emailForm} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputWrapper}>
