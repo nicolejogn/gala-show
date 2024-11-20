@@ -30,6 +30,7 @@ export async function pollData<T>(
           poll(resolve, reject)
         }, interval);
       } else {
+        
         reject(new Error('Polling timed out after 60 seconds'));
       }
     }
