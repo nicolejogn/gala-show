@@ -24,14 +24,13 @@ export const sendEmailMailgun = async ({to, subject}: { to: string; subject: str
 
   try {
     const response = await mg.messages.create(DOMAIN, {
-      from: '<games@mail.gala.com>',
+      from: '<mail@games-gala.com>',
       to,
       subject,
       html: template,
     });
-    console.log('response', response)
 
-    return {data: response.status === 200 ? 'success' : 'fail', error: null};
+    return {data: response?.status === 200 ? 'success' : 'fail', error: null};
   } catch (error: unknown) {
     return {error: error, data: null};
   }
