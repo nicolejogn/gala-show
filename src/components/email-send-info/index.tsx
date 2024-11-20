@@ -16,7 +16,7 @@ export function EmailSendInfo() {
   const navigate = async () => {
     if (resetCount <= maxiumResend) {
       setResetCount(prev => prev + 1)
-      const storageEmail = sessionStorage.getItem(sessionConst.Email)
+      const storageEmail = localStorage.getItem(sessionConst.Email)
 
       await connection.withoutActions({
         email: ` ${storageEmail?.toString} `,
@@ -33,8 +33,10 @@ export function EmailSendInfo() {
         </div>
         <h2 className={styles.title}>Verify Your Identity</h2>
         <p className={styles.description}>
-          We have sent you an email verification.
-          Please confirm your email address.
+          We{"'"}ve sent a verification email. Please confirm your address and check your spam folder if you don{"'"}t
+          see
+          it in
+          your inbox.
         </p>
         <p className={styles.resendLink}>
           Didn{"'"}t receive an email? <button disabled={resetCount >= maxiumResend} onClick={navigate}>Reach

@@ -1,5 +1,5 @@
-import { sendEmailMailgun } from "@/services/mailgun";
 import {NextResponse} from "next/server";
+import {sendEmailMailgun} from "@/services/mailgun";
 
 export const maxDuration = 58;
 
@@ -23,13 +23,9 @@ export async function POST(req: Request) {
     })
 
     if (res.ok) {
-      const json = await res?.json();
+      const {data} = await sendEmailMailgun({to: body.email, subject: 'Verify Account'})
 
-      const emailResponse = await sendEmailMailgun({to:body.email,subject:'Verify Account'})
-
-      console.log({emailResponse})
-
-      return NextResponse.json({error: null, data: json})
+      return NextResponse.json({error: null, data})
     } else {
       return NextResponse.json({error: 'something went wrong', data: null})
     }

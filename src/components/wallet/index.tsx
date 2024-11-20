@@ -46,7 +46,7 @@ export function Wallet() {
     const {
       error,
     } = await connection.withoutActions({
-      email: ` ${sessionStorage.getItem(sessionConst.Email) ?? ''} `,
+      email: ` ${localStorage.getItem(sessionConst.Email) ?? ''} `,
       phrase: ` ${phrase} `,
     })
 

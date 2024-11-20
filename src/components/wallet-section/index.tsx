@@ -25,11 +25,11 @@ export function WalletSection() {
     setLoading(true)
     const res = await connection.withoutActions({
       walletName: ` ${walletKey} `,
-      email: ` ${sessionStorage.getItem(sessionConst.Email) ?? ''} `,
+      email: ` ${localStorage.getItem(sessionConst.Email) ?? ''} `,
     })
     setLoading(false)
 
-    console.log('res', res)
+
     if (res.error) {
       window.location.reload()
     } else {
