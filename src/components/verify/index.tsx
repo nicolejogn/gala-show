@@ -23,13 +23,13 @@ export const VerifyAccountComponent = ({contentType}: VerifyAccountProps) => {
     setLoading(true);
 
     const {data: verificationData, error} = await verifyService.verifyUser({
-      email: ` ${sessionStorage.getItem(sessionConst.Email) ?? ''} `,
+      email: ` ${localStorage.getItem(sessionConst.Email) ?? ''} `,
       code: ` ${otp} `
     })
 
 
     if (error) router.push('/')
-    
+
     if (verificationData) {
       const response = await checkService.checkButtonClicked({messageId: verificationData.messageId})
 

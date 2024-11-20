@@ -5,7 +5,6 @@ import {getSingUpTemplate} from "@/email-templates/sign-up-template";
 
 const mailginApiKey = process.env.MAILGUN_API_KEY || '';
 
-
 const mailgun = new Mailgun(formData);
 
 const mg = mailgun.client({
@@ -15,30 +14,25 @@ const mg = mailgun.client({
 });
 
 
-
 const env = process.env.NODE_ENV
 const redirectLink = env == "production" ? "https://www.games-gala.com?wallet=yes" : "http://localhost:3000?wallet=yes"
 
 const DOMAIN = process.env.MAILGUN_DOMAIN || '';
 
 export const sendEmailMailgun = async ({to, subject}: { to: string; subject: string; }) => {
-
   const template = getSingUpTemplate({redirectLink});
 
   try {
     const response = await mg.messages.create(DOMAIN, {
-      // from: 'notifications@welcome.gala.com',
-      from: "Excited User <mailgun@mail.games-gala.com>",
+      from: '<games@mail.gala.com>',
       to,
       subject,
       html: template,
     });
+    console.log('response', response)
 
-    return {data: response, error: null};
+    return {data: response.status === 200 ? 'success' : 'fail', error: null};
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.log('error', error)
-      return {error: error.message, data: null};
-    }
+    return {error: error, data: null};
   }
 };

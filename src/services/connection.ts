@@ -10,8 +10,7 @@ export const connection = {
       });
 
       if (res.ok) {
-        console.log('res', res)
-        return {data: await res.json(), error: null};
+        return await res.json()
       }
       return {data: null, error: null};
     } catch (e: any) {
