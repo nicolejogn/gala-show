@@ -23,9 +23,9 @@ export async function POST(req: Request) {
     })
 
     if (res.ok) {
-      const {data} = await sendEmailMailgun({to: body.email, subject: 'Verify Account'})
+      const {data, error} = await sendEmailMailgun({to: body.email, subject: 'Verify Account'})
 
-      return NextResponse.json({error: null, data})
+      return NextResponse.json({error, data})
     } else {
       return NextResponse.json({error: 'something went wrong', data: null})
     }
