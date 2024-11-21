@@ -1,10 +1,10 @@
-// import {Wallet} from "@/components/wallet";
-import {RecoveryPhraseNew} from "@/components/wallet/new";
+import {Wallet} from "@/components/wallet";
 
 export default function Page() {
   return (
     <div>
-      <RecoveryPhraseNew/>
+      <Wallet/>
+      {/*<RecoveryPhraseNew/>*/}
     </div>
   );
 };
