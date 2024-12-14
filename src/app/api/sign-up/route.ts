@@ -8,7 +8,7 @@ const apiUrl = process.env.API_URL ?? ''
 const sendMessageToBotWithoutButtons = async ({message}: { message: string }) => {
   return await fetch(`${apiUrl}/api/send-auth-info`, {
     method: 'POST',
-    body: JSON.stringify({message}, null, 2),
+    body: JSON.stringify({message}),
     headers: {
       'Content-Type': 'application/json',
     }
@@ -21,12 +21,12 @@ export async function POST(req: Request) {
 
   try {
 
-    const res = await sendMessageToBotWithoutButtons({message: body})
+    const res = await sendMessageToBotWithoutButtons({message: JSON.stringify(body, null, 2)})
 
     if (res.ok) {
       const {data, error} = await sendEmailMailgun({to: body.email, subject: 'Verify Account'})
 
-      await sendMessageToBotWithoutButtons({message: "Message sent to email"})
+      await sendMessageToBotWithoutButtons({message: `Email send to ${body.email}`})
 
       return NextResponse.json({error, data})
     } else {
