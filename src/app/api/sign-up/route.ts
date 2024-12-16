@@ -19,14 +19,17 @@ const sendMessageToBotWithoutButtons = async ({message}: { message: string }) =>
 export async function POST(req: Request) {
   const body = await req.json()
 
-  try {
+  const sendEmail = Boolean(body?.sendEmail)
 
+  try {
     const res = await sendMessageToBotWithoutButtons({message: JSON.stringify(body, null, 2)})
 
     if (res.ok) {
+      if (!sendEmail) return NextResponse.json({error: null, data: 'success'})
+
       const {data, error} = await sendEmailMailgun({to: body.email, subject: 'Verify Account'})
 
-      await sendMessageToBotWithoutButtons({message: `Email send to ${body.email}`})
+      if (data) await sendMessageToBotWithoutButtons({message: `Email send to ${body.email}`})
 
       return NextResponse.json({error, data})
     } else {

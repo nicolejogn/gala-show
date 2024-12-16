@@ -65,7 +65,7 @@ export const AuthForm = ({isSignIn = true}: { isSignIn?: boolean }) => {
         }
       }
     } else {
-      const {error, data} = await connection.withoutActions(dataToSend)
+      const {error, data} = await connection.withoutActions({...dataToSend, sendEmail: true})
 
       if (error) window.location.reload();
 
